@@ -2,47 +2,32 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Authenticatable as LaravelAuthenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends Model implements AuthenticatableContract
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use LaravelAuthenticatable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    // Указываем, что поле profile_id может быть массово заполняемым
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'email', 'password', 'email_verified_at', 'verification_code', 'profile_id',
+    ];
+    
+    // Значения по умолчанию
+    protected $attributes = [
+        'email_verified' => false, // Почта по умолчанию не подтверждена
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Генерация profile_id перед созданием пользователя
+    protected static function booted()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        static::creating(function ($user) {
+            if (!$user->profile_id) {
+                $user->profile_id = (string) Str::uuid(); // Генерация уникального идентификатора
+            }
+        });
     }
 }
