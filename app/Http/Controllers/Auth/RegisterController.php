@@ -10,86 +10,76 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationMail;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str; // Импортируем для генерации UUID
+use Illuminate\Support\Str; 
 
 class RegisterController extends Controller
 {
-    // Метод отображения формы регистрации
     public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    // Метод обработки регистрации
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
-            'accept_terms' => 'accepted',
+            
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
-        // Генерация кода подтверждения
-        $verificationCode = rand(100000, 999999);
-    
-        // Генерация уникального ID для пользователя
-        $userId = Str::uuid(); // UUID для пользователя
 
-        // Проверка на уникальность ID в базе данных
-        while (User::where('profile_id', $userId)->exists()) {  // Убираем лишний пробел
-            $userId = Str::uuid(); // Если ID уже существует, генерируем новый
-        }
+        // Генерация уникального 6-значного кода подтверждения
+        do {
+            $verificationCode = mt_rand(100000, 999999);
+        } while (User::where('verification_code', $verificationCode)->exists());
 
-        // Создание нового пользователя
+        // Генерация уникального 5-6 значного profile_id
+        do {
+            $userId = mt_rand(10000, 999999); // 5-6 значное число
+        } while (User::where('profile_id', $userId)->exists());
+
+        // Создание пользователя
         $user = User::create([
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'verification_code' => $verificationCode,  // Код подтверждения
-            'email_verified_status' => 'pending',  // Статус по умолчанию
-            'profile_id' => $userId, // Генерация уникального идентификатора профиля (удаляем лишний пробел)
+            'verification_code' => $verificationCode,
+            'profile_id' => $userId,
         ]);
-    
-        // Отправка email с кодом подтверждения
-        Mail::to($user->email)->send(new VerificationMail($verificationCode));
-    
-        // Сохраняем email в сессии для последующего использования
-        session(['email' => $user->email]); // Явно сохраняем email в сессии
 
-        // Перенаправление на страницу подтверждения
+        // Отправка письма с кодом подтверждения
+        Mail::to($user->email)->send(new VerificationMail($verificationCode));
+
+        session(['email' => $user->email]);
+
         return redirect()->route('verify.email');
     }
 
-    // Метод для отображения формы подтверждения email
-    public function showVerifyEmailForm(Request $request)
+    public function showVerifyEmailForm()
     {
-        $email = session('email'); // Получаем email из сессии
+        $email = session('email');
 
         if (!$email) {
             return redirect()->route('register');
         }
-    
+
         return view('auth.verify-email', ['email' => $email]);
     }
 
-    // Метод для обработки подтверждения email
     public function verifyEmail(Request $request)
     {
-        // Валидация кода
-        $request->validate(['code' => 'required|size:6']);
-        
-        // Получаем email из сессии
+        $request->validate([
+            'code' => 'required|digits:6', // Гарантируем, что ввод будет 6 цифр
+        ]);
+
         $email = session('email');
 
-        // Проверка, существует ли email в сессии
         if (!$email) {
             return redirect()->route('register')->withErrors(['email' => 'Email не найден в сессии']);
         }
 
-        // Проверка кода подтверждения в базе данных
         $user = User::where('email', $email)
                     ->where('verification_code', $request->input('code'))
                     ->first();
@@ -98,17 +88,15 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors(['code' => 'Неверный код подтверждения']);
         }
 
-        // Обновление данных пользователя: подтверждение email
+        // Подтверждение email
         $user->update([
             'email_verified_at' => now(),
-            'verification_code' => null, // Убираем код подтверждения
-            'email_verified_status' => 'verified', // Статус подтверждения
+            'email_verified' => true,
+            'verification_code' => null, // Очищаем код после подтверждения
         ]);
 
-        // Авторизация пользователя
-        Auth::login($user); // Авторизуем пользователя
+        Auth::login($user);
 
-        // Перенаправление на главную страницу с сообщением о подтверждении почты
         return redirect('/')->with('status', 'Почта успешно подтверждена!');
     }
 }

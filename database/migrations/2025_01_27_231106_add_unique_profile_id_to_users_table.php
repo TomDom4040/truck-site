@@ -4,32 +4,25 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUniqueProfileIdToUsersTable extends Migration
+return new class extends Migration
 {
     /**
-     * Выполняется при применении миграции.
-     *
-     * @return void
+     * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Добавление уникального идентификатора профиля, который может быть NULL
-            // и будет размещен сразу после столбца 'id'
-            $table->uuid('profile_id')->unique()->nullable()->after('id');
+            //
         });
     }
 
     /**
-     * Выполняется при откате миграции.
-     *
-     * @return void
+     * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Удаление столбца profile_id
-            $table->dropColumn('profile_id');
+            //
         });
     }
-}
+};

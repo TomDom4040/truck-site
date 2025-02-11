@@ -13,21 +13,19 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->uuid('profile_id')->unique(); // Уникальный UUID
+            $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->string('avatar')->nullable();
+            $table->string('phone')->nullable();
             $table->text('description')->nullable();
-            $table->json('social_links')->nullable(); // Ссылки на соцсети в формате JSON
+            $table->json('social_links')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-
-            // Дополнительные поля
-            $table->tinyInteger('email_verified')->default(0); // Статус верификации email
-            $table->string('verification_code')->nullable(); // Код подтверждения
-            $table->enum('email_verified_status', ['pending', 'verified'])->default('pending'); // Статус email
-            $table->string('phone')->nullable(); // Добавление поля для телефона
+            $table->string('verification_code', 6)->nullable()->unique(); // 6-значный код подтверждения
+            $table->boolean('email_verified')->default(false);
         });
     }
 

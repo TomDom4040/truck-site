@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileEditController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdController;
 
 Route::get('/', [MainController::class, 'index']);
 
@@ -49,4 +51,12 @@ Route::middleware(['auth'])->group(function () {
     
     // Маршрут для обновления профиля
     Route::post('/profile-update', [ProfileEditController::class, 'update'])->name('profile.update');
+});
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/ads/create', [AdController::class, 'create'])->name('ads.create');
+    Route::post('/ads', [AdController::class, 'store'])->name('ads.store');
+    Route::get('/ads/payment/{ad}', [AdController::class, 'payment'])->name('ads.payment');
 });

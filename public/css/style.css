@@ -850,3 +850,64 @@ body.no-scroll {
 .support p {
     margin-bottom: 30px;
 }
+
+.ad-form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.ad-form-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.ad-form-group {
+    margin-bottom: 15px;
+}
+
+.ad-form-label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ad-form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+
+.ad-form-button {
+    width: 100%;
+    background: #00aaff;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.ad-form-button:hover {
+    background: #008ecc;
+}
+
+.ad-total-price {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
