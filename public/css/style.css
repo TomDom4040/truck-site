@@ -34,6 +34,7 @@ body {
     width: 100%;
     background: #F5F5F5;
     font-family: "Carlito", serif;
+    max-width: 440px;
 }
 
 header {
@@ -301,6 +302,14 @@ header {
     background: #ddd;
     border-radius: 8px;
     margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.video-placeholder video,
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .image-placeholder {

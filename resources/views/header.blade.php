@@ -23,9 +23,9 @@
         <ul>
             {{-- Для авторизованного пользователя --}}
             @auth
-                <li><a class="add_link" href="{{ route('ads.create') }}">Подать объявление</a></li>
-                <li><a href="{{ url('profile/' . $user->profile_id) }}">Аккаунт</a></li>
-                <li><a href="#">Мои объявления</a></li>
+                  <li><a class="add_link" href="{{ route('ads.create') }}">Подать объявление</a></li>
+                <li><a href="{{ url('profile/' . auth()->user()->profile_id) }}">Аккаунт</a></li>
+                <li><a href="{{ route('ads.my') }}">Мои объявления</a></li>
                 <li><a href="{{ url('/profile_edit') }}"">Настройки</a></li>
                 <li><a href="#">Тех.поддержка</a></li>
                 <li>

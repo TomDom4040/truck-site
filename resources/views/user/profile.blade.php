@@ -65,7 +65,7 @@
                 </div>
                 <div class="bottom_content_lk">
                     <a href="{{ route('profile.edit') }}">Редактировать</a>
-                    <a href="">Мои объявления</a>
+                    <a href="{{ route('ads.my') }}">Мои объявления</a>
                 </div>
             </div>
         </div>

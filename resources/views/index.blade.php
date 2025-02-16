@@ -21,6 +21,68 @@
     @endguest
     <section id="board">
         <div class="container">
+        @foreach($ads as $ad)
+    <div class="post">
+        <div class="post_header">
+            <a href="" class="account_post">
+                <div class="avatar">
+                    <img src="{{ asset('storage/' . $ad->user->avatar) }}" alt="Avatar">
+                </div>
+                <div class="account_info_post">
+                    <span class="name_post">
+                        {{ $ad->user->name }}
+                    </span>
+                    <span class="time_public">
+                        {{ $ad->created_at->format('H:i A') }}
+                    </span>
+                </div>
+            </a>
+            <div class="post_location">
+                <span class="location">{{ $ad->city->name ?? 'Unknown City' }}</span>
+                <div class="filters">
+                    <div id="car">🚘</div>
+                    <div id="house">🏠</div>
+                </div>
+            </div>
+            <div class="settings_post">
+                <button><img src="{{ asset('img/settings.svg') }}" alt="Settings"></button>
+            </div>
+        </div>
+
+        <div class="post_content">
+            
+
+            <!-- Изображения/видео -->
+            @if (!empty($ad->media) && $ad->media->count() > 0)
+                @foreach($ad->media as $media)
+                    @if ($media->type === 'image')
+                        <div class="image-placeholder">
+                            <img src="{{ asset('storage/' . $media->path) }}" alt="Image" class="post-media">
+                        </div>
+                    @elseif ($media->type === 'video')
+                        <div class="image-placeholder">
+                            <video controls class="post-media">
+                                <source src="{{ asset('storage/' . $media->path) }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+            <!-- Контент объявления -->
+            <div class="content">
+                {{ $ad->description }}
+            </div>
+        </div>
+
+        <div class="actions">
+            <span>Like <p style="margin-top: -3px; margin-left: 3px;">👍</p></span>
+            <span>Share ↩︎</span>
+        </div>
+    </div>
+@endforeach
+
+
             <!-- Format 1: With Video Placeholder -->
             <div class="post">
                 <div class="post_header">
