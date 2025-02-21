@@ -10,6 +10,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileEditController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\User\ProfileSettingsController;
+use App\Http\Controllers\User\EmailUpdateController;
+use App\Http\Controllers\User\PasswordUpdateController;
 
 // Главная страница
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -58,6 +61,13 @@ Route::middleware(['auth'])->group(function () {
     
     // Страница оплаты объявления
     Route::get('/ads/payment/{ad}', [AdController::class, 'payment'])->name('ads.payment');
+   
+    Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profile-settings');
+    Route::post('/profile-settings/update-email', [EmailUpdateController::class, 'sendVerificationCode'])->name('settings.sendVerificationCode');
+    Route::post('/profile-settings/verify-email', [EmailUpdateController::class, 'update'])->name('settings.updateEmail');
+    Route::post('/profile-settings/update-password', [PasswordUpdateController::class, 'update'])->name('settings.updatePassword');
+
+
 });
 
 // Отображение категорий

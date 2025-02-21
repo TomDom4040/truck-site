@@ -15,8 +15,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     use LaravelAuthenticatable, CanResetPasswordTrait, Notifiable;
 
     protected $fillable = [
-        'email', 'password', 'email_verified_at', 'verification_code', 'profile_id',
+        'email', 'password', 'email_verified_at', 'verification_code', 'profile_id', 'avatar', 'description', 'phone', 'social_links'
     ];
+    
 
     protected $attributes = [
         'email_verified' => false,

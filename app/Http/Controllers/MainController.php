@@ -12,9 +12,9 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user(); // Получаем текущего авторизованного пользователя
-        $ads = Ad::with('user', 'category', 'city')->latest()->get(); // Получаем объявления
+        $ads = Ad::with('user', 'category', 'city')->latest()->get(); // Получаем все объявления с пользователями и другими связанными данными
     
-        return view('index', compact('user', 'ads')); // Передаем и объявления, и данные о пользователе
+    return view('index', compact('ads')); // Передаем объявления в представление
     }
 
 

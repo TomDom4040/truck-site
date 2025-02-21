@@ -24,7 +24,7 @@
                 <div class="post_header">
                     <a href="" class="account_post">
                         <div class="avatar">
-                          <img src="{{ $user->avatar ? Storage::url($user->avatar) : asset('img/user_avatar.webp') }}" alt="Аватар пользователя" class="user-avatar">
+                          <img src="{{ $ad->user->avatar ? Storage::url($ad->user->avatar) : asset('img/user_avatar.webp') }}" alt="Аватар пользователя" class="user-avatar">
                         </div>
                         <div class="account_info_post">
                             <span class="name_post">
