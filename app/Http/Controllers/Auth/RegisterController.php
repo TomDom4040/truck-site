@@ -69,34 +69,41 @@ class RegisterController extends Controller
     }
 
     public function verifyEmail(Request $request)
-    {
-        $request->validate([
-            'code' => 'required|digits:6', // Гарантируем, что ввод будет 6 цифр
-        ]);
+{
+    $request->validate([
+        'code' => 'required|digits:6', // Гарантируем, что ввод будет 6 цифр
+    ]);
 
-        $email = session('email');
+    $email = session('email');
 
-        if (!$email) {
-            return redirect()->route('register')->withErrors(['email' => 'Email не найден в сессии']);
-        }
-
-        $user = User::where('email', $email)
-                    ->where('verification_code', $request->input('code'))
-                    ->first();
-
-        if (!$user) {
-            return redirect()->back()->withErrors(['code' => 'Неверный код подтверждения']);
-        }
-
-        // Подтверждение email
-        $user->update([
-            'email_verified_at' => now(),
-            'email_verified' => true,
-            'verification_code' => null, // Очищаем код после подтверждения
-        ]);
-
-        Auth::login($user);
-
-        return redirect('/')->with('status', 'Почта успешно подтверждена!');
+    if (!$email) {
+        return redirect()->route('register')->withErrors(['email' => 'Email не найден в сессии']);
     }
+
+    $user = User::where('email', $email)
+                ->where('verification_code', $request->input('code'))
+                ->first();
+
+    if (!$user) {
+        return redirect()->back()->withErrors(['code' => 'Неверный код подтверждения']);
+    }
+
+    // Подтверждение email
+    $user->update([
+        'email_verified_at' => now(),
+        'email_verified' => true,
+        'verification_code' => null, // Очищаем код после подтверждения
+    ]);
+
+    Auth::login($user);
+
+    // Если поля name или description пустые (то есть профиль еще не заполнен)
+    if (empty($user->name) || empty($user->description)) {
+        // Перенаправляем на страницу редактирования профиля
+        return redirect()->route('profile.edit');
+    }
+
+    return redirect('/')->with('status', 'Почта успешно подтверждена!');
+}
+
 }

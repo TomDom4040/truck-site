@@ -46,3 +46,6 @@
         </ul>
     </div>
 </header>
+ <div id="copy-message" class="copy-message" style="display:none;">
+    Ссылка скопирована!
+</div>

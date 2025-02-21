@@ -10,13 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function index()
-{
-    $user = Auth::user(); // Получаем авторизованного пользователя
-    $ads = Ad::with('user', 'category', 'city')->latest()->get(); // Получаем все объявления, включая связанные данные
-
-    // Передаем данные пользователя и объявления в представление
-    return view('index', compact('user', 'ads'));
-}
+    {
+        $user = Auth::user(); // Получаем текущего авторизованного пользователя
+        $ads = Ad::with('user', 'category', 'city')->latest()->get(); // Получаем объявления
+    
+        return view('index', compact('user', 'ads')); // Передаем и объявления, и данные о пользователе
+    }
 
 
     // Метод для отображения страницы авторизации

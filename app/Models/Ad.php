@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,8 +9,13 @@ class Ad extends Model
         'category_id',
         'city_id',
         'description',
-        'user_id', // Это кто публиковал объявление
-        'created_at', // Время публикации
+        'user_id',
+        'price',
+        'package',
+        'tg',
+        'fb',
+        'status',
+        'share_link', // Добавляем поле для хранения ссылки
     ];
 
     public function user()
@@ -33,5 +37,17 @@ class Ad extends Model
     public function media()
     {
         return $this->hasMany(Media::class);
+    }
+
+    // Генерация и сохранение ссылки на объявление
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($ad) {
+            // Генерация ссылки для объявления на основе ID
+            $ad->share_link = '/ads-' . $ad->id;
+            $ad->save(); // Сохраняем обновленную ссылку
+        });
     }
 }

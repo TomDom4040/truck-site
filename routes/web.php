@@ -12,7 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdController;
 
 // Главная страница
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [MainController::class, 'index'])->name('home');
 
 // Маршруты для входа
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -30,10 +30,10 @@ Route::middleware(['guest'])->group(function () {
 });
 
 // Маршруты для сброса пароля
-Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('/password/reset', [ResetPasswordController::class, 'reset']);
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('forgot-password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink']);
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'resetPassword']);
 
 // Группа маршрутов, доступных только аутентифицированным пользователям
 Route::middleware(['auth'])->group(function () {
@@ -53,7 +53,9 @@ Route::middleware(['auth'])->group(function () {
     // Сохранение объявления
     Route::post('/ads', [AdController::class, 'store'])->name('ads.store');
 
-    Route::get('/ads/my', [App\Http\Controllers\AdController::class, 'myAds'])->name('ads.my');
+    // Страница с моими объявлениями
+    Route::get('/ads/my', [AdController::class, 'myAds'])->name('ads.my');
+    
     // Страница оплаты объявления
     Route::get('/ads/payment/{ad}', [AdController::class, 'payment'])->name('ads.payment');
 });
@@ -62,9 +64,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
 // Роуты для отображения всех объявлений (например, на главной странице)
-Route::get('/ads', [AdController::class, 'index'])->name('index');
+Route::get('/ads', [AdController::class, 'index'])->name('ads.index');
 
 
-
-// Роут для просмотра одного объявления
-Route::get('/ads/{ad}', [AdController::class, 'show'])->name('ads.show');

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная - Elka Club</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
@@ -27,6 +27,7 @@
 
                 <button type="submit">Войти</button>
                 <a href="{{ route('register') }}" class="accoutn_link">Нету аккаунта?</a>
+                <a href="{{ route('forgot-password') }}" class="accoutn_link">Забыли пароль?</a>
             </form>
             </div>
         </div>
