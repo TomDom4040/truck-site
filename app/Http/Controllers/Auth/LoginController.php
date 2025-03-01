@@ -17,31 +17,30 @@ class LoginController extends Controller
 
     // Метод обработки авторизации
     public function login(Request $request)
-    {
-        // Валидация данных
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
+{
+    // Валидация данных
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required|min:6',
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Попытка авторизации
-        if (Auth::attempt([
-            'email' => $request->input('email'),
-            'password' => $request->input('password')
-        ])) {
-            // Если авторизация успешна, редирект на нужную страницу
-            return redirect()->intended('/')->with('status', 'Вы успешно авторизованы!');
-        }
-
-        // Если авторизация не удалась
-        return redirect()->back()->withErrors([
-            'email' => 'Неверный email или пароль.',
-        ])->withInput();
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()]);
     }
+
+    // Попытка авторизации
+    if (Auth::attempt([
+        'email' => $request->input('email'),
+        'password' => $request->input('password')
+    ])) {
+        // Если авторизация успешна, перенаправляем пользователя
+        return redirect()->intended('/'); // Замените '/dashboard' на нужный вам маршрут
+    }
+
+    // Если авторизация не удалась
+    return response()->json(['errors' => ['email' => ['Неверный email или пароль.']]]);
+}
+
 
     // Метод для выхода из системы
     public function logout()

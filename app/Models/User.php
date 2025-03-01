@@ -18,7 +18,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'email', 'password', 'email_verified_at', 'verification_code', 'profile_id', 'avatar', 'description', 'phone', 'social_links'
     ];
     
-
+    public function getIsAdminAttribute()
+    {
+        return $this->attributes['is_admin'];
+    }
     protected $attributes = [
         'email_verified' => false,
     ];

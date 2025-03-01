@@ -23,6 +23,9 @@
         <ul>
             {{-- Для авторизованного пользователя --}}
             @auth
+                @if(auth()->user()->is_admin)
+                    <li><a href="{{ route('admin.index') }}">Админ-панель</a></li>
+                @endif
                   <li><a class="add_link" href="{{ route('ads.create') }}">Подать объявление</a></li>
                 <li><a href="{{ url('profile/' . auth()->user()->profile_id) }}">Аккаунт</a></li>
                 <li><a href="{{ route('ads.my') }}">Мои объявления</a></li>

@@ -25,6 +25,7 @@
         .tab-btn {
             background:rgba(36, 200, 250, 0.51);
                 height: 40px;
+                cursor: pointer;
     border-radius: 20px;
     font-family: 'Montserrat';
     font-style: normal;

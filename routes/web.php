@@ -13,6 +13,8 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\User\ProfileSettingsController;
 use App\Http\Controllers\User\EmailUpdateController;
 use App\Http\Controllers\User\PasswordUpdateController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminMiddleware;
 
 // Главная страница
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -68,6 +70,25 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile-settings/update-password', [PasswordUpdateController::class, 'update'])->name('settings.updatePassword');
 
 
+});
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    // Остальные маршруты
+   
+    // Пользователи
+    Route::get('/users', [AdminController::class, 'usersIndex'])->name('admin.users.index');
+    Route::get('/users/{id}/edit', [AdminController::class, 'usersEdit'])->name('admin.users.edit');
+    Route::delete('/users/{id}', [AdminController::class, 'usersDestroy'])->name('admin.users.destroy');
+ 
+ // Заказы
+ Route::get('/orders', [AdminController::class, 'ordersIndex'])->name('admin.orders.index');
+ Route::get('/orders/{id}/edit', [AdminController::class, 'ordersEdit'])->name('admin.orders.edit');
+ Route::delete('/orders/{id}', [AdminController::class, 'ordersDestroy'])->name('admin.orders.destroy');
+
+ // Товары
+ Route::get('/products', [AdminController::class, 'productsIndex'])->name('admin.products.index');
+ Route::get('/products/{id}/edit', [AdminController::class, 'productsEdit'])->name('admin.products.edit');
+ Route::delete('/products/{id}', [AdminController::class, 'productsDestroy'])->name('admin.products.destroy');
 });
 
 // Отображение категорий
