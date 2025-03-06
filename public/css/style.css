@@ -35,7 +35,7 @@ body {
     width: 100%;
     background: #F5F5F5;
     font-family: "Carlito", serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji', 'EmojiOne', sans-serif;
-    ;
+    margin: 0 auto;
     max-width: 440px;
 }
 
@@ -1314,4 +1314,8 @@ body.no-scroll {
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
+}
+
+.form-group {
+    width: 100%;
 }

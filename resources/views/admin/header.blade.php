@@ -6,6 +6,7 @@
         <nav class="admin-nav">
             <ul>
                 <li><a href="{{ route('admin.users.index') }}">Пользователи</a></li>
+                <li><a href="{{ route('admin.ad-settings.index') }}">Настройки объявлений</a></li> 
                 <li><a href="{{ route('admin.orders.index') }}">Заказы</a></li>
                 <li><a href="{{ route('admin.products.index') }}">Товары</a></li>
                 <li>

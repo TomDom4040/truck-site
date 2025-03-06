@@ -34,6 +34,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 .admin-nav ul li {
@@ -54,7 +55,8 @@ body {
     font-size: 16px;
 }
 
-.dashboard {
+.dashboard,
+.container {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -163,5 +165,133 @@ body {
     .btn {
         padding: 6px 12px;
         font-size: 12px;
+    }
+}
+
+
+/* Добавим стиль для таблицы */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-edit,
+.btn-delete {
+    margin-right: 5px;
+}
+
+.table-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    color: #007bff;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+/* Стили для формы поиска */
+
+.search-form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-form input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Адаптивные стили для поиска */
+
+@media (max-width: 768px) {
+    .search-form {
+        text-align: left;
+    }
+    .search-form input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .search-form button {
+        width: 100%;
+        margin-left: 0;
     }
 }

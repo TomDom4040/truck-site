@@ -20,6 +20,11 @@
                 <p>Управление пользователями системы</p>
                 <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Перейти</a>
             </div>
+             <div class="card">
+                <h2>Настройки объявлений</h2>
+                <p>Управление настройками объявлений</p>
+               <a href="{{ route('admin.ad-settings.index') }}" class="btn btn-primary">Перейти</a>
+            </div>
             <div class="card">
                 <h2>Заказы</h2>
                 <p>Управление заказами</p>

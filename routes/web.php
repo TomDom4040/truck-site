@@ -15,6 +15,7 @@ use App\Http\Controllers\User\EmailUpdateController;
 use App\Http\Controllers\User\PasswordUpdateController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AdSettingsController;
 
 // Главная страница
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -72,24 +73,53 @@ Route::middleware(['auth'])->group(function () {
 
 });
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    
+    // Главная страница админ-панели
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    // Остальные маршруты
-   
-    // Пользователи
-    Route::get('/users', [AdminController::class, 'usersIndex'])->name('admin.users.index');
-    Route::get('/users/{id}/edit', [AdminController::class, 'usersEdit'])->name('admin.users.edit');
-    Route::delete('/users/{id}', [AdminController::class, 'usersDestroy'])->name('admin.users.destroy');
- 
- // Заказы
- Route::get('/orders', [AdminController::class, 'ordersIndex'])->name('admin.orders.index');
- Route::get('/orders/{id}/edit', [AdminController::class, 'ordersEdit'])->name('admin.orders.edit');
- Route::delete('/orders/{id}', [AdminController::class, 'ordersDestroy'])->name('admin.orders.destroy');
+    
+    // Страница пользователей
+    Route::prefix('users')->name('admin.users.')->group(function () {
+        Route::get('/', [AdminController::class, 'usersIndex'])->name('index');
+        Route::get('/{profile_id}', [AdminController::class, 'usersEdit'])->name('edit');
+        Route::put('/{profile_id}', [AdminController::class, 'usersUpdate'])->name('update');
+        Route::delete('/{profile_id}', [AdminController::class, 'usersDestroy'])->name('destroy');
+    });
 
- // Товары
- Route::get('/products', [AdminController::class, 'productsIndex'])->name('admin.products.index');
- Route::get('/products/{id}/edit', [AdminController::class, 'productsEdit'])->name('admin.products.edit');
- Route::delete('/products/{id}', [AdminController::class, 'productsDestroy'])->name('admin.products.destroy');
+    // Поиск пользователей
+    Route::get('search', [AdminController::class, 'search'])->name('admin.search');
+    
+    // Настройки объявлений
+    Route::prefix('ad-settings')->name('admin.ad-settings.')->group(function () {
+        Route::get('/', [AdSettingsController::class, 'index'])->name('index');
+        Route::post('/city', [AdSettingsController::class, 'storeCity'])->name('storeCity');
+        Route::put('/city/{id}', [AdSettingsController::class, 'updateCity'])->name('updateCity');
+        Route::delete('/city/{id}', [AdSettingsController::class, 'destroyCity'])->name('destroyCity');
+        
+        Route::post('/category', [AdSettingsController::class, 'storeCategory'])->name('storeCategory');
+        Route::put('/category/{id}', [AdSettingsController::class, 'updateCategory'])->name('updateCategory');
+        Route::delete('/category/{id}', [AdSettingsController::class, 'destroyCategory'])->name('destroyCategory');
+
+        Route::post('/storePackage', [AdSettingsController::class, 'storePackage'])->name('storePackage');
+        Route::put('/updatePackage/{id}', [AdSettingsController::class, 'updatePackage'])->name('updatePackage');
+        Route::delete('/destroyPackage/{id}', [AdSettingsController::class, 'destroyPackage'])->name('destroyPackage');
+        Route::post('/updateSocialPrice', [AdSettingsController::class, 'updateSocialPrice'])->name('updateSocialPrice');
+    });
+
+    // Заказы
+    Route::prefix('orders')->name('admin.orders.')->group(function () {
+        Route::get('/', [AdminController::class, 'ordersIndex'])->name('index');
+        Route::get('/{id}/edit', [AdminController::class, 'ordersEdit'])->name('edit');
+        Route::delete('/{id}', [AdminController::class, 'ordersDestroy'])->name('destroy');
+    });
+
+    // Товары
+    Route::prefix('products')->name('admin.products.')->group(function () {
+        Route::get('/', [AdminController::class, 'productsIndex'])->name('index');
+        Route::get('/{id}/edit', [AdminController::class, 'productsEdit'])->name('edit');
+        Route::delete('/{id}', [AdminController::class, 'productsDestroy'])->name('destroy');
+    });
 });
+
 
 // Отображение категорий
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

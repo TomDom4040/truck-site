@@ -21,7 +21,7 @@
     <!-- Категория -->
     <div class="ad-form-group">
         <label for="category" class="ad-form-label">Категория</label>
-        <select name="category_id" id="category" class="ad-form-input" onchange="updatePrices()">
+        <select name="category_id" id="category" class="ad-form-input" onchange="calculateTotal()">
             <option value="" disabled selected>Выберите категорию</option>
             @foreach($categories as $category)
                 <option value="{{ $category->id }}" data-price="{{ $category->price }}">
@@ -34,7 +34,7 @@
     <!-- Город -->
     <div class="ad-form-group">
         <label for="city" class="ad-form-label">Город</label>
-        <select name="city_id" id="city" class="ad-form-input" onchange="updatePrices()">
+        <select name="city_id" id="city" class="ad-form-input" onchange="calculateTotal()">
             <option value="" disabled selected>Выберите город</option>
             @foreach($cities as $city)
                 <option value="{{ $city->id }}" data-price="{{ $city->price }}">
@@ -60,23 +60,24 @@
     <!-- Размещение на Тг и Фб -->
     <div class="ad-form-group">
         <label for="tg" class="ad-form-label">Разместить на Тг</label>
-        <input type="checkbox" name="tg" id="tg" class="ad-form-checkbox" value="1" {{ old('tg') ? 'checked' : '' }} onchange="calculateTotal()">
+        <input type="checkbox" name="tg" id="tg" class="ad-form-checkbox" value="{{ $socialPrices->tg_price }}" {{ old('tg') ? 'checked' : '' }} onchange="calculateTotal()">
     </div>
     <div class="ad-form-group">
         <label for="fb" class="ad-form-label">Разместить на Фб</label>
-        <input type="checkbox" name="fb" id="fb" class="ad-form-checkbox" value="1" {{ old('fb') ? 'checked' : '' }} onchange="calculateTotal()">
+        <input type="checkbox" name="fb" id="fb" class="ad-form-checkbox" value="{{ $socialPrices->fb_price }}" {{ old('fb') ? 'checked' : '' }} onchange="calculateTotal()">
     </div>
 
     <!-- Пакет -->
     <div class="ad-form-group">
         <label for="package" class="ad-form-label">Выберите пакет</label>
-        <select name="package" id="package" class="ad-form-input" onchange="updatePrices()">
-            <option value="" disabled selected>Выберите пакет</option>
-            <option value="1" data-price="1">1 объявление</option>
-            <option value="5" data-price="4">5 объявлений</option>
-            <option value="10" data-price="7">10 объявлений</option>
-            <option value="30" data-price="15">30 объявлений</option>
-        </select>
+        <select name="package" id="package" class="ad-form-input" onchange="calculateTotal()">
+    <option value="" disabled selected>Выберите пакет</option>
+    @foreach($packages as $package)
+        <option value="{{ $package->id }}" data-price="{{ $package->price }}">
+            {{ $package->name }} - ${{ $package->price }}
+        </option>
+    @endforeach
+</select>
     </div>
 
     <!-- Итоговая стоимость -->
@@ -98,60 +99,30 @@
 </div>
 
 <script>
-function updateCharCount() {
-    var textarea = document.getElementById("description");
-    var charCount = document.getElementById("charCount");
-    var currentLength = textarea.value.length;
-    charCount.textContent = currentLength + "/500";
-    // Блокировка ввода лишних символов (хотя атрибут maxlength уже ограничивает ввод)
-    if (currentLength > 500) {
-        textarea.value = textarea.value.substring(0, 500);
-        charCount.textContent = "500/500";
-    }
-}
-function updatePrices() {
+function calculateTotal() {
     let category = document.getElementById("category");
     let city = document.getElementById("city");
     let package = document.getElementById("package");
-    let tg = document.getElementById("tg");
-    let fb = document.getElementById("fb");
+    let tgCheckbox = document.getElementById("tg");
+    let fbCheckbox = document.getElementById("fb");
 
-    // Извлекаем данные о стоимости из атрибутов
     let categoryPrice = parseFloat(category.options[category.selectedIndex]?.getAttribute("data-price")) || 0;
     let cityPrice = parseFloat(city.options[city.selectedIndex]?.getAttribute("data-price")) || 0;
-    let packagePrice = parseFloat(package?.options[package.selectedIndex]?.getAttribute("data-price")) || 0;
+    let packagePrice = parseFloat(package.options[package.selectedIndex]?.getAttribute("data-price")) || 0;
+    let tgPrice = tgCheckbox.checked ? parseFloat(tgCheckbox.value) || 0 : 0;
+let fbPrice = fbCheckbox.checked ? parseFloat(fbCheckbox.value) || 0 : 0;
 
-    // Инициализируем итоговую стоимость
-    let totalPrice = categoryPrice + cityPrice + packagePrice;
+    let totalPrice = categoryPrice + cityPrice + packagePrice + tgPrice + fbPrice;
 
-    // Добавляем стоимость за Тг и Фб
-    if (tg.checked) totalPrice += 1;  // Цена за Тг
-    if (fb.checked) totalPrice += 1.5;  // Цена за Фб
-
-    // Обновляем итоговую стоимость
     document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
 }
 
-function calculateTotal() {
-    let media = document.getElementById("media").files;
-
-    // Цена города
-    let citySelect = document.getElementById("city");
-    let cityPrice = parseFloat(citySelect.options[citySelect.selectedIndex]?.getAttribute("data-price")) || 0;
-
-    let totalPrice = cityPrice; // Начинаем с цены города
-
-    // Обновляем итоговую стоимость
-    document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
-}
-
-// Добавляем слушатели событий для всех полей
-document.getElementById("category").addEventListener("change", updatePrices);
-document.getElementById("city").addEventListener("change", updatePrices);
-document.getElementById("package").addEventListener("change", updatePrices);
-document.getElementById("tg").addEventListener("change", updatePrices);
-document.getElementById("fb").addEventListener("change", updatePrices);
-document.getElementById("media").addEventListener("change", calculateTotal);
+// Слушатели событий для обновления цены
+document.getElementById("category").addEventListener("change", calculateTotal);
+document.getElementById("city").addEventListener("change", calculateTotal);
+document.getElementById("package").addEventListener("change", calculateTotal);
+document.getElementById("tg").addEventListener("change", calculateTotal);
+document.getElementById("fb").addEventListener("change", calculateTotal);
 </script>
 
 
