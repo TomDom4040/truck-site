@@ -5,10 +5,10 @@
         </div>
         <nav class="admin-nav">
             <ul>
+                <li><a href="{{ url('/') }}">Сайт</a></li>
                 <li><a href="{{ route('admin.users.index') }}">Пользователи</a></li>
                 <li><a href="{{ route('admin.ad-settings.index') }}">Настройки объявлений</a></li> 
-                <li><a href="{{ route('admin.orders.index') }}">Заказы</a></li>
-                <li><a href="{{ route('admin.products.index') }}">Товары</a></li>
+                <li><a href="{{ route('admin.ads.index') }}">Объявления</a></li>
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

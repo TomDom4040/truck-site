@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пользователи - Админ-панель</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <!-- Подключение иконок Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,11 +18,15 @@
         <h1>Пользователи</h1>
 
         {{-- Форма для поиска по почте --}}
-        <form action="{{ route('admin.users.index') }}" method="GET">
+        <form action="{{ route('admin.users.index') }}" method="GET" class="search-form">
             <div class="form-group">
-                <label for="search">Поиск по почте:</label>
-                <input type="text" name="search" id="search" value="{{ request()->get('search') }}" placeholder="Введите email для поиска" class="form-control">
-                <button type="submit" class="btn btn-primary">Поиск</button>
+                <label for="search" class="form-label">Поиск по почте:</label>
+                <div class="input-group">
+                    <input type="text" name="search" id="search" value="{{ request()->get('search') }}" placeholder="Введите email для поиска" class="form-control">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-search"></i> Поиск
+                    </button>
+                </div>
             </div>
         </form>
 
@@ -44,28 +50,32 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phone }}</td>
                             <td>
-                                <!-- Галочка для админа -->
                                 @if($user->is_admin)
-                                    <span class="badge badge-success">Админ</span>
+                                    <span class="badge bg-success">Админ</span>
                                 @else
-                                    <span class="badge badge-secondary">Не админ</span>
+                                    <span class="badge bg-secondary">Не админ</span>
                                 @endif
                             </td>
                             <td>
-                                <!-- Ссылка на редактирование с использованием profile_id -->
-                                <a href="{{ route('admin.users.edit', $user->profile_id) }}" class="btn btn-primary">Редактировать</a>
-                                <form action="{{ route('admin.users.destroy', $user->profile_id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Удалить</button>
-                                </form>
+                                <div class="action-buttons">
+                                    <a href="{{ route('admin.users.edit', $user->profile_id) }}" class="btn btn-edit">
+                                        <i class="bi bi-pencil"></i> Редактировать
+                                    </a>
+                                    <form action="{{ route('admin.users.destroy', $user->profile_id) }}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этого пользователя?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i> Удалить
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                    @endforeach
                 </tbody>
             </table>
 
-            {{-- Добавим пагинацию --}}
+            {{-- Пагинация --}}
             <div class="pagination">
                 {{ $users->links() }}
             </div>

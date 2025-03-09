@@ -12,11 +12,15 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user(); // Получаем текущего авторизованного пользователя
-        $ads = Ad::with('user', 'category', 'city')->latest()->get(); // Получаем все объявления с пользователями и другими связанными данными
+        
+        // Фильтруем объявления по статусу 'approved' и сортируем по approved_at
+        $ads = Ad::with('user', 'category', 'city')
+                 ->where('status', 'approved') // Только одобренные объявления
+                 ->orderBy('approved_at', 'desc') // Сортировка по дате одобрения (сначала новые)
+                 ->get(); // Получаем все объявления с пользователями и другими связанными данными
     
-    return view('index', compact('ads')); // Передаем объявления в представление
+        return view('index', compact('ads')); // Передаем объявления в представление
     }
-
 
     // Метод для отображения страницы авторизации
     public function auth()

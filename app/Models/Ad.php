@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -6,18 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 class Ad extends Model
 {
     protected $fillable = [
+        'user_id',
         'category_id',
         'city_id',
         'description',
-        'user_id',
+        'status',
         'price',
-        'package',
         'tg',
         'fb',
-        'status',
-        'share_link', // Добавляем поле для хранения ссылки
+        'package_id', // Измените на package_id
+        'share_link',
+        'approved_at',
     ];
+// Приведение approved_at к типу datetime
+protected $dates = [
+    'approved_at',
+    'created_at',
+    'updated_at',
+];
 
+// Или используйте $casts, если хотите явно указать тип
+protected $casts = [
+    'approved_at' => 'datetime',
+    'created_at' => 'datetime',
+    'updated_at' => 'datetime',
+];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,21 +47,24 @@ class Ad extends Model
         return $this->belongsTo(City::class);
     }
 
-    // Связь с медиафайлами
     public function media()
     {
         return $this->hasMany(Media::class);
     }
 
-    // Генерация и сохранение ссылки на объявление
+    public function package()
+{
+    return $this->belongsTo(Package::class, 'package', 'id');
+}
+
+
     public static function boot()
     {
         parent::boot();
 
         static::created(function ($ad) {
-            // Генерация ссылки для объявления на основе ID
             $ad->share_link = '/ads-' . $ad->id;
-            $ad->save(); // Сохраняем обновленную ссылку
+            $ad->save();
         });
     }
 }

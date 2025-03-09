@@ -59,25 +59,25 @@
 
     <!-- Размещение на Тг и Фб -->
     <div class="ad-form-group">
-        <label for="tg" class="ad-form-label">Разместить на Тг</label>
-        <input type="checkbox" name="tg" id="tg" class="ad-form-checkbox" value="{{ $socialPrices->tg_price }}" {{ old('tg') ? 'checked' : '' }} onchange="calculateTotal()">
-    </div>
-    <div class="ad-form-group">
-        <label for="fb" class="ad-form-label">Разместить на Фб</label>
-        <input type="checkbox" name="fb" id="fb" class="ad-form-checkbox" value="{{ $socialPrices->fb_price }}" {{ old('fb') ? 'checked' : '' }} onchange="calculateTotal()">
-    </div>
+    <label for="tg" class="ad-form-label">Разместить на Тг</label>
+    <input type="checkbox" name="tg" id="tg" class="ad-form-checkbox" value="1" {{ old('tg') ? 'checked' : '' }} onchange="calculateTotal()">
+</div>
+<div class="ad-form-group">
+    <label for="fb" class="ad-form-label">Разместить на Фб</label>
+    <input type="checkbox" name="fb" id="fb" class="ad-form-checkbox" value="1" {{ old('fb') ? 'checked' : '' }} onchange="calculateTotal()">
+</div>
 
     <!-- Пакет -->
-    <div class="ad-form-group">
-        <label for="package" class="ad-form-label">Выберите пакет</label>
-        <select name="package" id="package" class="ad-form-input" onchange="calculateTotal()">
-    <option value="" disabled selected>Выберите пакет</option>
-    @foreach($packages as $package)
-        <option value="{{ $package->id }}" data-price="{{ $package->price }}">
-            {{ $package->name }} - ${{ $package->price }}
-        </option>
-    @endforeach
-</select>
+     <div class="ad-form-group">
+        <label for="package_id" class="ad-form-label">Выберите пакет</label>
+        <select name="package_id" id="package_id" class="ad-form-input" required>
+            <option value="" disabled selected>Выберите пакет</option>
+            @foreach($packages as $package)
+                <option value="{{ $package->id }}" data-price="{{ $package->price }}">
+                    {{ $package->name }} - ${{ $package->price }}
+                </option>
+            @endforeach
+        </select>
     </div>
 
     <!-- Итоговая стоимость -->
@@ -99,6 +99,21 @@
 </div>
 
 <script>
+function updateCharCount() {
+    const description = document.getElementById('description');
+    const charCount = document.getElementById('charCount');
+    const maxLength = 500;
+
+    charCount.textContent = `${description.value.length}/${maxLength}`;
+}
+
+// Инициализация счетчика при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    updateCharCount();
+});
+
+// Слушатель события для обновления счетчика
+document.getElementById('description').addEventListener('input', updateCharCount);
 function calculateTotal() {
     let category = document.getElementById("category");
     let city = document.getElementById("city");

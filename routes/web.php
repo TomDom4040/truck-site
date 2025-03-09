@@ -16,6 +16,7 @@ use App\Http\Controllers\User\PasswordUpdateController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdSettingsController;
+use App\Http\Controllers\Admin\AdminAdController;
 
 // Главная страница
 Route::get('/', [MainController::class, 'index'])->name('home');
@@ -105,19 +106,16 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::post('/updateSocialPrice', [AdSettingsController::class, 'updateSocialPrice'])->name('updateSocialPrice');
     });
 
-    // Заказы
-    Route::prefix('orders')->name('admin.orders.')->group(function () {
-        Route::get('/', [AdminController::class, 'ordersIndex'])->name('index');
-        Route::get('/{id}/edit', [AdminController::class, 'ordersEdit'])->name('edit');
-        Route::delete('/{id}', [AdminController::class, 'ordersDestroy'])->name('destroy');
+    Route::prefix('admin/ads')->name('admin.ads.')->group(function () {
+        Route::get('/', [AdminAdController::class, 'index'])->name('index');
+        Route::get('/pending', [AdminAdController::class, 'pending'])->name('pending');
+        Route::get('/{id}/edit', [AdminAdController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [AdminAdController::class, 'update'])->name('update');
+        Route::delete('/{id}', [AdminAdController::class, 'destroy'])->name('destroy');
+        Route::delete('/admin/media/{media}', [AdController::class, 'destroyMedia'])->name('admin.media.destroy');
     });
 
-    // Товары
-    Route::prefix('products')->name('admin.products.')->group(function () {
-        Route::get('/', [AdminController::class, 'productsIndex'])->name('index');
-        Route::get('/{id}/edit', [AdminController::class, 'productsEdit'])->name('edit');
-        Route::delete('/{id}', [AdminController::class, 'productsDestroy'])->name('destroy');
-    });
+    
 });
 
 

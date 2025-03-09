@@ -2,12 +2,17 @@
     <div class="wrapper">
         <div class="header">
             <a href="{{ url('/') }}"><img src="{{ asset('img/logo.svg') }}" alt=""></a>
+           <div class="right_menu">
+            @auth
+                    <a href="{{ route('ads.create') }}" class="create_btn">Разместить пост</a>
+                @endauth
             <button class="burger_menu">
                 <img src="{{ asset('img/burger.svg') }}" alt="">
             </button>
+            </div>
         </div>
+        
     </div>
-
     <div class="burger_menu_content">
         <div class="burger_header">
             <a href="{{ url('/') }}"><img src="{{ asset('img/logo_circle.svg') }}" alt=""></a>
