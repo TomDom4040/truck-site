@@ -69,15 +69,15 @@
 
     <!-- Пакет -->
      <div class="ad-form-group">
-        <label for="package_id" class="ad-form-label">Выберите пакет</label>
-        <select name="package_id" id="package_id" class="ad-form-input" required>
-            <option value="" disabled selected>Выберите пакет</option>
-            @foreach($packages as $package)
-                <option value="{{ $package->id }}" data-price="{{ $package->price }}">
-                    {{ $package->name }} - ${{ $package->price }}
-                </option>
-            @endforeach
-        </select>
+        <select name="package_id" id="package" class="ad-form-input" required>
+    <option value="" disabled selected>Выберите пакет</option>
+    @foreach($packages as $package)
+        <option value="{{ $package->id }}" data-price="{{ $package->price }}">
+            {{ $package->name }} - ${{ $package->price }}
+        </option>
+    @endforeach
+</select>
+
     </div>
 
     <!-- Итоговая стоимость -->
@@ -99,45 +99,52 @@
 </div>
 
 <script>
-function updateCharCount() {
-    const description = document.getElementById('description');
-    const charCount = document.getElementById('charCount');
-    const maxLength = 500;
+    // Передаем цены из PHP в JavaScript
+    const tgPriceFromDB = {{ $socialPrices->tg_price ?? 0 }};
+    const fbPriceFromDB = {{ $socialPrices->fb_price ?? 0 }};
 
-    charCount.textContent = `${description.value.length}/${maxLength}`;
-}
+    function updateCharCount() {
+        const description = document.getElementById('description');
+        const charCount = document.getElementById('charCount');
+        const maxLength = 500;
 
-// Инициализация счетчика при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    updateCharCount();
-});
+        charCount.textContent = `${description.value.length}/${maxLength}`;
+    }
 
-// Слушатель события для обновления счетчика
-document.getElementById('description').addEventListener('input', updateCharCount);
-function calculateTotal() {
-    let category = document.getElementById("category");
-    let city = document.getElementById("city");
-    let package = document.getElementById("package");
-    let tgCheckbox = document.getElementById("tg");
-    let fbCheckbox = document.getElementById("fb");
+    function calculateTotal() {
+        let category = document.getElementById("category");
+        let city = document.getElementById("city");
+        let package = document.getElementById("package");
+        let tgCheckbox = document.getElementById("tg");
+        let fbCheckbox = document.getElementById("fb");
 
-    let categoryPrice = parseFloat(category.options[category.selectedIndex]?.getAttribute("data-price")) || 0;
-    let cityPrice = parseFloat(city.options[city.selectedIndex]?.getAttribute("data-price")) || 0;
-    let packagePrice = parseFloat(package.options[package.selectedIndex]?.getAttribute("data-price")) || 0;
-    let tgPrice = tgCheckbox.checked ? parseFloat(tgCheckbox.value) || 0 : 0;
-let fbPrice = fbCheckbox.checked ? parseFloat(fbCheckbox.value) || 0 : 0;
+        if (!category || !city || !package || !tgCheckbox || !fbCheckbox) {
+            console.error("One or more elements not found");
+            return;
+        }
 
-    let totalPrice = categoryPrice + cityPrice + packagePrice + tgPrice + fbPrice;
+        let categoryPrice = parseFloat(category.options[category.selectedIndex]?.getAttribute("data-price")) || 0;
+        let cityPrice = parseFloat(city.options[city.selectedIndex]?.getAttribute("data-price")) || 0;
+        let packagePrice = parseFloat(package.options[package.selectedIndex]?.getAttribute("data-price")) || 0;
+        let tgPrice = tgCheckbox.checked ? tgPriceFromDB : 0; // Используем цену из базы данных
+        let fbPrice = fbCheckbox.checked ? fbPriceFromDB : 0; // Используем цену из базы данных
 
-    document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
-}
+        let totalPrice = categoryPrice + cityPrice + packagePrice + tgPrice + fbPrice;
 
-// Слушатели событий для обновления цены
-document.getElementById("category").addEventListener("change", calculateTotal);
-document.getElementById("city").addEventListener("change", calculateTotal);
-document.getElementById("package").addEventListener("change", calculateTotal);
-document.getElementById("tg").addEventListener("change", calculateTotal);
-document.getElementById("fb").addEventListener("change", calculateTotal);
+        document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCharCount();
+        calculateTotal();
+    });
+
+    document.getElementById("category").addEventListener("change", calculateTotal);
+    document.getElementById("city").addEventListener("change", calculateTotal);
+    document.getElementById("package").addEventListener("change", calculateTotal);
+    document.getElementById("tg").addEventListener("change", calculateTotal);
+    document.getElementById("fb").addEventListener("change", calculateTotal);
+    document.getElementById('description').addEventListener('input', updateCharCount);
 </script>
 
 

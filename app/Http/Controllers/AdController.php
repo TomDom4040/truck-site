@@ -25,21 +25,21 @@ class AdController extends Controller
     return view('index', compact('ads'));
 }
 
-    public function create()
-    {
-        $user = Auth::user();
+public function create()
+{
+    $user = Auth::user();
 
-        if (empty($user->name) || empty($user->description)) {
-            return redirect()->route('profile.edit');
-        }
-
-        $categories = Category::all();
-        $cities = City::all();
-        $packages = Package::all();
-        $socialPrices = SocialPrice::first();
-
-        return view('ads.create', compact('categories', 'cities', 'packages', 'socialPrices', 'user'));
+    if (empty($user->name) || empty($user->description)) {
+        return redirect()->route('profile.edit');
     }
+
+    $categories = Category::all();
+    $cities = City::all();
+    $packages = Package::all();
+    $socialPrices = SocialPrice::first(); // Получаем первую запись из таблицы social_prices
+
+    return view('ads.create', compact('categories', 'cities', 'packages', 'socialPrices', 'user'));
+}
 
     public function store(Request $request)
 {
@@ -97,7 +97,7 @@ class AdController extends Controller
         return view('ads.my', compact('user', 'ads'));
     }
 
-    private function calculatePrice(Request $request)
+    public function calculatePrice(Request $request)
 {
     $category = Category::find($request->category_id);
     $city = City::find($request->city_id);
