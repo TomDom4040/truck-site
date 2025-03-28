@@ -22,8 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('no-scroll'); // Разрешить скролл
     }
 
-    // Открытие меню по кнопке "Бургер"
-    burgerMenuButton.addEventListener('click', openMenu);
+    // Переключение меню при клике на кнопку "Бургер"
+    burgerMenuButton.addEventListener('click', function() {
+        if (burgerMenuContent.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
 
     // Закрытие меню при клике на кнопку "Закрыть"
     closeBurgerButton.addEventListener('click', closeMenu);

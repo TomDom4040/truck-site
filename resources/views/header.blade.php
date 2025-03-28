@@ -14,25 +14,16 @@
         
     </div>
     <div class="burger_menu_content">
-        <div class="burger_header">
-            <a href="{{ url('/') }}"><img src="{{ asset('img/logo_circle.svg') }}" alt=""></a>
-            <div class="button_burger">
-                <button class="filter">
-                    <img src="{{ asset('img/search.svg') }}" alt="">
-                </button>
-                <button class="close_burger">
-                    <img src="{{ asset('img/close_burger.svg') }}" alt="">
-                </button>
-            </div>
-        </div>
+        
         <ul>
             {{-- Для авторизованного пользователя --}}
             @auth
                 @if(auth()->user()->is_admin)
                     <li><a href="{{ route('admin.index') }}">Админ-панель</a></li>
                 @endif
-                  <li><a class="add_link" href="{{ route('ads.create') }}">Подать объявление</a></li>
                 <li><a href="{{ url('profile/' . auth()->user()->profile_id) }}">Аккаунт</a></li>
+                 
+                
                 <li><a href="{{ route('ads.my') }}">Мои объявления</a></li>
                 <li><a href="{{ route('profile-settings') }}">Настройки</a></li>
 

@@ -135,3 +135,15 @@ if (window.location.hash) {
         requestAnimationFrame(animateScroll);
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('input, textarea, [contenteditable]');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.style.zoom = "1";
+            }, 100);
+        });
+    });
+});
