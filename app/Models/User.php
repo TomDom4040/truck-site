@@ -2,36 +2,47 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable as LaravelAuthenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Support\Str;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use LaravelAuthenticatable, CanResetPasswordTrait, Notifiable;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
     protected $fillable = [
-       'name', 'email', 'password', 'email_verified_at', 'verification_code', 'profile_id', 'avatar', 'description', 'phone', 'social_links'
-    ];
-    
-    public function getIsAdminAttribute()
-    {
-        return $this->attributes['is_admin'];
-    }
-    protected $attributes = [
-        'email_verified' => false,
+        'name',
+        'email',
+        'password',
     ];
 
-    protected static function booted()
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        static::creating(function ($user) {
-            if (!$user->profile_id) {
-                $user->profile_id = (string) Str::uuid();
-            }
-        });
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }

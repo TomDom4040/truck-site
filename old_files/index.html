@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truck Repair in Los Angeles</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .lang-toggle {
+      background: #334155;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #e2e8f0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Mobile Truck Repair in the Los Angeles Area</h1>
+    <button class="lang-toggle" onclick="toggleLang()">Русский</button>
+  </header>
+
+  <main>
+    <section>
+      <h2 id="servicesTitle">Our Services</h2>
+      <p id="servicesText">
+        We offer fast mobile truck repair anywhere in Los Angeles County. Call us any time — 24/7 emergency response available.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="contactTitle">Contact</h2>
+      <p id="contactText">
+        Phone: (747) 329-9691<br />
+        Email: truckrepair@example.com
+      </p>
+    </section>
+
+    <section>
+      <h2 id="pricingTitle">Pricing</h2>
+      <p id="pricingText">
+        Call-out: $150 flat rate. <br /> Labor: $80/hour. <br /> Estimates available on-site.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Mobile Truck Repair — All rights reserved.
+  </footer>
+
+  <script>
+    let lang = "en";
+
+    const content = {
+      en: {
+        title: "Truck Repair in Los Angeles",
+        servicesTitle: "Our Services",
+        servicesText: "We offer fast mobile truck repair anywhere in Los Angeles County. Call us any time — 24/7 emergency response available.",
+        contactTitle: "Contact",
+        contactText: "Phone: (555) 123-4567\nEmail: truckrepair@example.com",
+        pricingTitle: "Pricing",
+        pricingText: "Call-out: $150 flat rate. \nLabor: $80/hour. \nEstimates available on-site.",
+        button: "Русский"
+      },
+      ru: {
+        title: "Ремонт траков в Лос-Анджелесе",
+        servicesTitle: "Наши услуги",
+        servicesText: "Мы предоставляем быстрый выездной ремонт траков по всему округу Лос-Анджелес. Звоните в любое время — экстренные выезды 24/7.",
+        contactTitle: "Контакты",
+        contactText: "Телефон: (555) 123-4567\nEmail: truckrepair@example.com",
+        pricingTitle: "Цены",
+        pricingText: "Выезд: $150. \nРабота: $80/час. \nОценка на месте.",
+        button: "English"
+      }
+    };
+
+    function toggleLang() {
+      lang = lang === "en" ? "ru" : "en";
+      document.getElementById("title").textContent = content[lang].title;
+      document.getElementById("servicesTitle").textContent = content[lang].servicesTitle;
+      document.getElementById("servicesText").textContent = content[lang].servicesText;
+      document.getElementById("contactTitle").textContent = content[lang].contactTitle;
+      document.getElementById("contactText").innerHTML = content[lang].contactText.replace(/\n/g, "<br>");
+      document.getElementById("pricingTitle").textContent = content[lang].pricingTitle;
+      document.getElementById("pricingText").innerHTML = content[lang].pricingText.replace(/\n/g, "<br>");
+      document.querySelector(".lang-toggle").textContent = content[lang].button;
+    }
+  </script>
+</body>
+</html>

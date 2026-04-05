@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Mobile Truck Repair</title>
+  <link rel="stylesheet" href="/assets/app.css?v=1">
+</head>
+<body>
+
+  <!-- Top blue bar (same as Home) -->
+ <div class="header">
+  <div class="header-inner content-row">
+    <a class="cta-btn" href="/form">Request Repair Cost</a>
+    <div class="spacer"></div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/about" aria-current="page">About Us</a>
+      <a href="/#services">Services</a>
+      <a href="/#contact">Contact Us</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-inner content-row">
+    <div class="copyright">© 2025 Mobile Truck Repair. All rights reserved.</div>
+    <nav>
+      <a href="/">Home</a> ·
+      <a href="/about">About</a> ·
+      <a href="/#services">Services</a> ·
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+  <!-- About Section -->
+  <main class="content-row" style="padding: 24px 16px;">
+    <section class="about">
+      <h1>About Us</h1>
+      <p>
+        We are a professional mobile truck repair company serving Los Angeles
+        and surrounding areas. Our team of experienced mechanics provides
+        on-site diagnostics, brake repairs, electrical work, oil changes,
+        and pneumatic system services.
+      </p>
+      <p>
+        Our mission is to get you back on the road quickly, safely,
+        and with reliable service you can trust.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="content-row" style="padding: 24px 16px;">
+    <p>&copy; 2025 Mobile Truck Repair. All rights reserved.</p>
+  </footer>
+
+  <!-- (если на главной есть JS для бургер-меню, продублируй его тут) -->
+  <!-- <script src="/main.js"></script> -->
+
+</body>
+</html>

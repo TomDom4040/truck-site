@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Repair Request</title>
+
+<style>
+  :root{
+    --page-bg: #e9f1f2;        /* фон страницы */
+    --field-bg: #ffffff;       /* фон полей */
+    --field-text: #111;
+    --field-border: #ecedef;
+    --field-border-focus: #2b92c4;
+    --placeholder: #9aa0a6;
+    --btn-bg: #2b92c4;
+    --btn-bg-hover: #0056b3;
+    --btn-text: #fff;
+  }
+
+  /* Страница */
+  body{
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--page-bg);
+    margin: 2rem;
+  }
+
+  /* ЕДИНЫЙ КОНТЕЙНЕР для всего контента (680px) */
+  .container{
+    width: 100%;
+    max-width: 680px;      /* ключевая ширина */
+    margin: 0 auto;        /* центрируем колонку */
+  }
+
+  /* Заголовок должен начинаться от левого края контейнера */
+  h1{
+    margin: .2rem 0 1rem 0;
+    text-align: left;
+  }
+
+  /* Кнопка «назад» — по центру, уже чем контейнер */
+  .back{
+    max-width: 220px;
+    display: block;
+    margin: 0 auto 1.2rem auto;
+    font: inherit; border: none; cursor: pointer; border-radius: 10px;
+    padding: .7rem 1.1rem; background: var(--btn-bg); color: var(--btn-text);
+    transition: background .15s ease, opacity .15s ease;
+  }
+  .back:hover{ background: var(--btn-bg-hover); }
+
+  /* Подписи — строго слева, по тому же левому краю, что и поля */
+  label{
+    display: block;
+    margin: .75rem 0 .35rem 0;
+    text-align: left;
+  }
+
+  /* Поля — на всю ширину контейнера */
+  input, textarea{
+    font: inherit;
+    width: 100%;
+    background: var(--field-bg); color: var(--field-text);
+    border: 1px solid var(--field-border); border-radius: 10px;
+    padding: .7rem .9rem; outline: none; box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  input::placeholder, textarea::placeholder{ color: var(--placeholder); }
+  input:focus, textarea:focus{
+    border-color: var(--field-border-focus);
+    box-shadow: 0 0 0 3px rgba(0,123,255,.15), inset 0 1px 2px rgba(0,0,0,.05);
+  }
+  textarea{ height: 140px; resize: vertical; }
+
+  /* Кнопки формы — ровно по ширине контейнера */
+  .btn{
+    width: 100%;
+    display: block;
+    margin: 1rem 0 0 0;
+    font: inherit; border: none; cursor: pointer; border-radius: 10px;
+    padding: .7rem 1.1rem; background: var(--btn-bg); color: var(--btn-text);
+    transition: background .15s ease, opacity .15s ease;
+  }
+  .btn:hover{ background: var(--btn-bg-hover); }
+  .btn:disabled{ opacity: .6; cursor: not-allowed; }
+
+  .ok{color: green;  margin-top: .75rem;}
+  .err{color: #b00020; margin-top: .75rem;}
+
+  /* Снимаем жёлтый фон автозаполнения на iOS */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus{
+    -webkit-text-fill-color: var(--field-text) !important;
+    -webkit-box-shadow: 0 0 0 1000px var(--field-bg) inset !important;
+    box-shadow: 0 0 0 1000px var(--field-bg) inset !important;
+    border: 1px solid var(--field-border) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+</style>
+
+<!-- ВАЖНО: всё, что должно быть выровнено одинаково, кладём в .container -->
+<div class="container">
+  <button class="back" onclick="window.location.href='index.html'">Back to Main Page</button>
+
+  <h1>Repair Request</h1>
+
+  <form id="f">
+    <label>1) Write the exact address where the repair needs to be done: *</label>
+    <textarea id="address" placeholder="123 Main St, Los Angeles, CA" required></textarea>
+
+    <label>2) Describe the breakdown: *</label>
+    <textarea id="breakdown" placeholder="Describe the issue briefly..." required></textarea>
+
+    <label>3) Your email: *</label>
+    <input id="email" type="email" autocomplete="email" autocapitalize="off" placeholder="name@example.com" required>
+
+    <label>4) Your phone: *</label>
+    <input id="phone" autocomplete="tel" inputmode="tel" placeholder="+1 (555) 123-4567" required>
+
+    <button id="submitBtn" type="submit" class="btn">Submit</button>
+    <div id="msg"></div>
+  </form>
+</div>
+
+<script>
+const f = document.getElementById('f');
+const btn = document.getElementById('submitBtn');
+const msg = document.getElementById('msg');
+
+f.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
+  try{
+    const payload = {
+      address: document.getElementById('address').value.trim(),
+      breakdown: document.getElementById('breakdown').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim()
+    };
+    const r = await fetch('/api/repair-request', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await r.json().catch(()=>({}));
+    if(!r.ok || data.ok===false) throw new Error(data.error || 'Send failed');
+    msg.className='ok'; msg.textContent='Thanks! Your request was sent.';
+    f.reset();
+  }catch(err){
+    console.error(err);
+    msg.className='err'; msg.textContent='Could not send right now. Please try again.';
+  }finally{
+    btn.disabled = false; btn.textContent = 'Submit';
+  }
+});
+</script>
+</html>

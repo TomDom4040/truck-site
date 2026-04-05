@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Truck Repair in Los Angeles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6ec;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    .top-image img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .map-and-text {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .map {
+      flex: 1;
+      min-width: 280px;
+    }
+    .map img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .text-blocks {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .text-block {
+      background-color: #555;
+      color: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      position: relative;
+    }
+    .button {
+      display: inline-block;
+      background-color: #3ab4f2;
+      color: white;
+      font-weight: bold;
+      padding: 15px 20px;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 6px;
+      margin-top: auto;
+    }
+    .button:hover {
+      background-color: #2b92c4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-image">
+      <img src="/img/truck-main.jpg" alt="Mobile Truck Repair in Los Angeles" />
+    </div>
+
+    <div class="map-and-text">
+      <div class="map">
+        <img src="/img/map.jpg" alt="Service area map" />
+      </div>
+      <div class="text-blocks">
+        <div class="text-block">
+          We will come to your breakdown location within Los Angeles County plus 150 mi
+        </div>
+        <div class="text-block">
+          Our top-class mechanics will perform any necessary work.
+        </div>
+        <div class="text-block">
+          We will quickly and efficiently repair your truck
+        </div>
+        <a href="form.html" class="button">CALCULATE THE REPAIR COST 💰</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
