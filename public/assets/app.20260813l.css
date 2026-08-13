@@ -178,3 +178,8 @@ ul,ol{ margin:0 0 1em 1.2em; }
   /* кнопки в синей шапке тоже не впритык к краям */
   .header .header-inner{ padding-left:10px !important; padding-right:10px !important; }
 }
+
+/* Карта и строка с адресом ведут в навигатор — вид при этом прежний */
+.map a{ display:block; }
+a.text-block{ display:block; text-decoration:none; color:#fff; cursor:pointer; }
+a.text-block:hover{ background:#4a4a4a; }
