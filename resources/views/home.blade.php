@@ -24,7 +24,7 @@
           <img src="/images/image.map.png" alt="Service area map" />
         </div>
         <div class="text-blocks">
-          <div class="text-block">We will come to your breakdown location within Los Angeles County plus 150 mi</div>
+          <div class="text-block">Our Location: 📍 5800 Sheila St, Commerce, CA</div>
           <div class="text-block">Our top-class mechanics will perform any necessary work.</div>
           <div class="text-block">We will quickly and efficiently repair your truck</div>
           <div class="cta-wrap">
