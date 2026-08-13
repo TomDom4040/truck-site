@@ -24,12 +24,12 @@
       @php $routeUrl = 'https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode('5800 Sheila St, Commerce, CA 90040'); @endphp
       <div class="map-and-text">
         <div class="map">
-          <a href="{{ $routeUrl }}" target="_blank" rel="noopener" aria-label="Build a route to 5800 Sheila St, Commerce, CA">
+          <a class="route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener" aria-label="Build a route to 5800 Sheila St, Commerce, CA">
             <img src="/images/image.map.png?v=4" alt="Service area map" />
           </a>
         </div>
         <div class="text-blocks">
-          <a class="text-block" href="{{ $routeUrl }}" target="_blank" rel="noopener">Location: 📍 5800 Sheila St, Commerce, CA</a>
+          <a class="text-block route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener">Location: 📍 5800 Sheila St, Commerce, CA</a>
           <div class="text-block">☎️ (747) 329-9691</div>
           <div class="cta-wrap">
             <a href="/form" class="button">CALCULATE THE REPAIR COST 💰</a>
@@ -41,5 +41,16 @@
   </main>
 
   @include('partials.footer')
+<script>
+// На iPhone/iPad ссылку Google Maps браузер открывает в вебе, если приложения нет.
+// Родные «Карты» есть всегда — поэтому там подменяем адрес ссылки на них.
+(function () {
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
+  var dest = encodeURIComponent('5800 Sheila St, Commerce, CA 90040');
+  document.querySelectorAll('.route-link').forEach(function (a) {
+    a.href = 'https://maps.apple.com/?daddr=' + dest + '&dirflg=d';
+  });
+})();
+</script>
 </body>
 </html>
