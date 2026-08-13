@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mobile Truck Repair in Los Angeles Area</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="/assets/app.20260813f.css">
+<link rel="stylesheet" href="/assets/app.20260813g.css">
 </head>
 <body class="page-wrap">
   @include('partials.header')
