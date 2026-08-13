@@ -148,3 +148,16 @@ ul,ol{ margin:0 0 1em 1.2em; }
    которое обнуляет отступ ВСЕМ div внутри контейнера (кнопка — <a>, её это не задевало).
    Поэтому задаём отступ более специфичным селектором и тоже через !important. */
 .page-body .container .text-block{ padding-left:24px !important; }
+
+/* Мобильные: контент во всю ширину экрана.
+   Было: body/main/.container имели боковые отступы по 8px, при этом .container с width:100%
+   вылезал за экран (картинка трака и карта обрезались справа). Обнуляем отступы и явно
+   держим ширину по экрану — всё встаёт от края до края и ничего не срезается. */
+@media (max-width:639px){
+  body, main, .content-wrap{ padding-left:0 !important; padding-right:0 !important; }
+  .container{
+    padding-left:0 !important; padding-right:0 !important;
+    max-width:100% !important; width:100% !important; box-sizing:border-box !important;
+  }
+  .page-body{ overflow-x:hidden; }
+}
