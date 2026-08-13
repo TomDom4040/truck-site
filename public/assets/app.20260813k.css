@@ -163,6 +163,7 @@ ul,ol{ margin:0 0 1em 1.2em; }
   /* один и тот же вертикальный просвет между всеми блоками: трак → карта → полосы → кнопка */
   .map-and-text{ margin-top:10px !important; gap:10px !important; }
   .text-blocks{ gap:10px !important; }
+  .site-footer{ margin-top:10px !important; }   /* до подвала такой же просвет, как между блоками */
   .page-body .container .cta-wrap{ padding-bottom:max(10px, env(safe-area-inset-bottom)) !important; }
   /* полосы (шапка, подвал, серые блоки) идут во всю ширину, но текст внутри
      не должен липнуть к самому краю — даём внутренний отступ */
