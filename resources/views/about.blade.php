@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us - Mobile Truck Repair</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="/assets/app.20260813.css">
+<link rel="stylesheet" href="/assets/app.20260813b.css">
 <style>
   /* Лок для About: убираем любые левые отступы/абзацные отступы */
   .about-page .container *{
