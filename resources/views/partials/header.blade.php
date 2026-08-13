@@ -1,11 +1,3 @@
-<!-- Top gray bar -->
-<div class="topbar">
-  <div class="topbar-inner content-row" style="justify-content:space-between;">
-    <span class="topbar-title">MOBILE TRUCK REPAIR IN LOS ANGELES AREA</span>
-    <a href="tel:+18185551234" class="topbar-phone">+1 (818) 555-1234</a>
-  </div>
-</div>
-
 <!-- Blue sticky header -->
 <div class="header">
   <div class="header-inner content-row">
