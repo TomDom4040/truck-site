@@ -24,7 +24,7 @@
           <img src="/images/image.map.png?v=2" alt="Service area map" />
         </div>
         <div class="text-blocks">
-          <div class="text-block">Our Location: 📍 5800 Sheila St, Commerce, CA</div>
+          <div class="text-block">Location: 📍 5800 Sheila St, Commerce, CA</div>
           <div class="text-block">☎️ (747) 329-9691</div>
           <div class="cta-wrap">
             <a href="/form" class="button">CALCULATE THE REPAIR COST 💰</a>
