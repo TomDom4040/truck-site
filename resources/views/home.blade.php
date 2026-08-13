@@ -18,42 +18,6 @@
         <img src="/images/image1.jpg?v=2" alt="Mobile Truck Repair in Los Angeles" />
       </div>
 
-      <!-- Services band -->
-      <div class="services-bar" id="services">
-        <ul class="services-grid">
-          <li class="service-item">
-            <div class="service-icon no-border" style="width:60px;height:60px;">
-              <img src="/images/image.diagnostics.png" alt="Diagnostics">
-            </div>
-          </li>
-          <li class="service-item">
-            <div class="service-icon no-border" style="width:60px;height:60px;">
-              <img src="/images/image.pneumatic_repair.png" alt="Pneumatic Repair">
-            </div>
-          </li>
-          <li class="service-item">
-            <div class="service-icon no-border" style="width:60px;height:60px;">
-              <img src="/images/image.electrical_repair2.png" alt="Electrical Repair">
-            </div>
-          </li>
-          <li class="service-item">
-            <div class="service-icon no-border" style="width:60px;height:60px;">
-              <img src="/images/image.brake_repair.png" alt="Brake Repair">
-            </div>
-          </li>
-          <li class="service-item">
-            <div class="service-icon no-border" style="width:60px;height:60px;">
-              <img src="/images/image.mechanical_repair.png" alt="Mechanical Repair">
-            </div>
-          </li>
-          <li class="service-item">
-            <div class="service-icon no-border" style="width:60px;height:60px;">
-              <img src="/images/image.change_oil.png" alt="Change Oil">
-            </div>
-          </li>
-        </ul>
-      </div>
-
       <!-- Map + text -->
       <div class="map-and-text">
         <div class="map">
