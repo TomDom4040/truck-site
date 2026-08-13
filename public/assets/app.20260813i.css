@@ -168,7 +168,8 @@ ul,ol{ margin:0 0 1em 1.2em; }
   .page-body .container .cta-wrap{ padding-left:6px !important; }
   /* серые полосы — чуть уже экрана, чтобы по краям остались небольшие просветы.
      margin-left перебиваем !important: выше по файлу он обнуляется для всех div в контейнере */
-  .page-body .container .text-block{ margin-left:6px !important; margin-right:6px !important; }
+  .page-body .container .text-block{ margin-left:6px !important; margin-right:6px !important;
+    padding-top:10px; padding-bottom:10px; }   /* полосы чуть ниже по высоте */
   /* кнопки в синей шапке тоже не впритык к краям */
   .header .header-inner{ padding-left:10px !important; padding-right:10px !important; }
 }
