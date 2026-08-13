@@ -26,7 +26,6 @@
         <div class="text-blocks">
           <div class="text-block">Our Location: 📍 5800 Sheila St, Commerce, CA</div>
           <div class="text-block">☎️ (747) 329-9691</div>
-          <div class="text-block">We will quickly and efficiently repair your truck</div>
           <div class="cta-wrap">
             <a href="/form" class="button">CALCULATE THE REPAIR COST 💰</a>
           </div>
