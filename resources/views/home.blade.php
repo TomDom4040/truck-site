@@ -15,7 +15,7 @@
 
       <!-- Hero -->
       <div class="top-image">
-        <img src="/images/image1.jpg?v=2" alt="Mobile Truck Repair in Los Angeles" />
+        <img src="/images/image1.jpg?v=3" alt="Mobile Truck Repair in Los Angeles" />
       </div>
 
       <!-- Map + text -->
