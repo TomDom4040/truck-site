@@ -21,7 +21,7 @@
       <!-- Map + text -->
       <div class="map-and-text">
         <div class="map">
-          <img src="/images/image.map.png" alt="Service area map" />
+          <img src="/images/image.map.png?v=2" alt="Service area map" />
         </div>
         <div class="text-blocks">
           <div class="text-block">Our Location: 📍 5800 Sheila St, Commerce, CA</div>
