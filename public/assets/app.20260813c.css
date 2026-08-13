@@ -142,3 +142,9 @@ ul,ol{ margin:0 0 1em 1.2em; }
   padding-left: 0 !important;
   text-indent: 0 !important;
 }
+
+/* Серые блоки под картой: левый отступ текста.
+   Выше по файлу есть правило `.page-body .container :is(...,div){padding-left:0 !important}`,
+   которое обнуляет отступ ВСЕМ div внутри контейнера (кнопка — <a>, её это не задевало).
+   Поэтому задаём отступ более специфичным селектором и тоже через !important. */
+.page-body .container .text-block{ padding-left:24px !important; }
