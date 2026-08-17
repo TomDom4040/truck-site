@@ -55,10 +55,19 @@
 </footer>
 
 <style>
-  /* соцсети переехали под колонки — ставим по центру с воздухом сверху и снизу */
-  .footer-social{ justify-content:center; gap:18px; margin:6px 0 14px; }
-  .site-footer .footer-contact .value{ margin-bottom:6px; }
+  /* У этих классов в общем CSS правил нет — оформляем здесь. */
+  .site-footer .footer-inner{ align-items: flex-start; }        /* колонки выравниваем по верху */
+  .footer-icon-row{ display:flex; }
+  .footer-social{ justify-content:center; gap:20px; margin:18px 0 12px; font-size:20px; }
+  .site-footer .footer-bottom{ text-align:center; padding:0 12px; font-size:14px; opacity:.85; }
+  .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
+  .site-footer .footer-title{ margin:0 0 8px; font-size:17px; }
+  .site-footer .footer-list{ list-style:none; margin:0; padding:0; }
+  .site-footer .footer-list li{ margin-bottom:4px; }
+  .site-footer .footer-text{ margin:0; }
 </style>
+
+<script src="/assets/i18n.js?v=4"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
