@@ -21,6 +21,8 @@
     'nav.services':  'Услуги',
     'nav.contact':   'Контакты',
     'nav.menu':      'МЕНЮ',
+    'nav.ourServices': 'Наши услуги',
+    'nav.ourContacts': 'Наши контакты',
     'cta.request':   'Рассчитать стоимость',
 
     // главная

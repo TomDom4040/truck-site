@@ -22,7 +22,7 @@
     </section>
 
     <!-- 2. Services -->
-    <section>
+    <section id="services">
       <h3 class="footer-title" data-i18n="footer.services">Services</h3>
       <ul class="footer-list">
         <li data-i18n="footer.diag">● Diagnostics</li>
@@ -35,7 +35,7 @@
     </section>
 
     <!-- 3. Contacts -->
-    <section>
+    <section id="contact">
       <h3 class="footer-title" data-i18n="footer.contacts">Contact Info</h3>
       <div class="footer-contact">
         <div>
@@ -70,7 +70,7 @@
   </div>
 </footer>
 
-<script src="/assets/i18n.js?v=2"></script>
+<script src="/assets/i18n.js?v=3"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
