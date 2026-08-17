@@ -2,6 +2,13 @@
 <style>
   /* Надпись на месте бывшей красной кнопки (только на главной).
      Отступы те же, что были у кнопки, — соседние элементы шапки не съезжают. */
+  .lang-switch{ display:inline-flex; gap:6px; margin-left:-6px; }
+  .lang-btn{
+    font: inherit; font-weight:700; font-size:14px; line-height:1;
+    color:#fff; background:transparent; cursor:pointer;
+    border:1px solid rgba(255,255,255,.55); border-radius:6px; padding:6px 10px;
+  }
+  .lang-btn.on{ background:#fff; color:#17739c; border-color:#fff; }   /* выбранный язык */
   .lang-label{
     color: var(--text-on-dark, #fff);
     font-weight: 700;
@@ -17,15 +24,19 @@
          На остальных страницах кнопка «Request Repair Cost» осталась. --}}
     @if (request()->is('/'))
       <span class="lang-label">language:</span>
+      <span class="lang-switch">
+        <button type="button" class="lang-btn" data-lang="ru">Ru</button>
+        <button type="button" class="lang-btn" data-lang="en">En</button>
+      </span>
     @else
-      <a class="cta-btn" href="/form">Request Repair Cost</a>
+      <a class="cta-btn" href="/form" data-i18n="cta.request">Request Repair Cost</a>
     @endif
     <div class="spacer"></div>
     <nav class="main-nav" aria-label="Primary">
-      <a href="/" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">Home</a>
-      <a href="/about" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">About Us</a>
-      <a href="/#services" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">Services</a>
-      <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">Contact Us</a>
+      <a href="/" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.home">Home</a>
+      <a href="/about" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.about">About Us</a>
+      <a href="/#services" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.services">Services</a>
+      <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.contact">Contact Us</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
   </div>
@@ -34,9 +45,9 @@
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner content-row" style="flex-direction:column; gap:8px; align-items:stretch;">
-    <a href="/"        style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);">Home</a>
-    <a href="/about"   style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);">About Us</a>
-    <a href="/#services"style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);">Services</a>
-    <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0;">Contact Us</a>
+    <a href="/"        style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.home">Home</a>
+    <a href="/about"   style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.about">About Us</a>
+    <a href="/#services"style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.services">Services</a>
+    <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0;" data-i18n="nav.contact">Contact Us</a>
   </div>
 </div>

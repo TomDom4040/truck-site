@@ -4,9 +4,7 @@
     <!-- 1. Brand / description / socials -->
     <section>
       <h3 class="footer-title">LES Truck Repair Service</h3>
-      <p class="footer-text">
-        Mobile Semi-Truck, Pickup Truck &amp; Trailer Repair Service in Los Angeles area
-      </p>
+      <p class="footer-text" data-i18n="footer.tagline">Mobile Semi-Truck, Pickup Truck &amp; Trailer Repair Service in Los Angeles area</p>
       <div class="footer-icon-row">
         <a class="footer-icon" href="https://www.facebook.com/groups/1061231975929415/?ref=share_group_link&mibextid=wwXIfr" aria-label="Facebook" target="_blank">
           <i class="fab fa-facebook"></i>
@@ -25,33 +23,33 @@
 
     <!-- 2. Services -->
     <section>
-      <h3 class="footer-title">Services</h3>
+      <h3 class="footer-title" data-i18n="footer.services">Services</h3>
       <ul class="footer-list">
-        <li>● Diagnostics</li>
-        <li>● DPF Service</li>
-        <li>● Electrical Repair</li>
-        <li>• Oil Change</li>
-        <li>• Brake Jobs</li>
-        <li>• Air System Repair</li>
+        <li data-i18n="footer.diag">● Diagnostics</li>
+        <li data-i18n="footer.dpf">● DPF Service</li>
+        <li data-i18n="footer.electrical">● Electrical Repair</li>
+        <li data-i18n="footer.oil">• Oil Change</li>
+        <li data-i18n="footer.brakes">• Brake Jobs</li>
+        <li data-i18n="footer.air">• Air System Repair</li>
       </ul>
     </section>
 
     <!-- 3. Contacts -->
     <section>
-      <h3 class="footer-title">Contact Info</h3>
+      <h3 class="footer-title" data-i18n="footer.contacts">Contact Info</h3>
       <div class="footer-contact">
         <div>
-          <div class="label">Address</div>
+          <div class="label" data-i18n="footer.address">Address</div>
           <div class="value">9250 Tujunga Ave<br>Sun Valley, CA 91352</div>
         </div>
         <div>
-          <div class="label">Phone</div>
+          <div class="label" data-i18n="footer.phone">Phone</div>
           <div class="value">
             <a class="footer-link" href="tel:+18184896181">818-423-6473</a><br>
           </div>
         </div>
         <div>
-          <div class="label">E-mail</div>
+          <div class="label" data-i18n="footer.email">E-mail</div>
           <div class="value">
             <a class="footer-link" href="mailto:people.us20@gmail.com.com">info@MobileTruckepair.com</a>
           </div>
@@ -61,16 +59,18 @@
 
     <!-- 4. Newsletter -->
     <section>
-      <h3 class="footer-title">Newsletter</h3>
-      <p class="footer-text">Sign up to receive the latest news and special discounts.</p>
-      <a class="footer-cta" href="#newsletter">Sign Up Now ▸</a>
+      <h3 class="footer-title" data-i18n="footer.newsletter">Newsletter</h3>
+      <p class="footer-text" data-i18n="footer.newsText">Sign up to receive the latest news and special discounts.</p>
+      <a class="footer-cta" href="#newsletter" data-i18n="footer.signup">Sign Up Now ▸</a>
     </section>
   </div>
 
   <div class="footer-bottom">
-    Copyright © 2021–<span id="y"></span>. All rights reserved.
+    Copyright © 2021–<span id="y"></span>. <span data-i18n="footer.rights">All rights reserved.</span>
   </div>
 </footer>
+
+<script src="/assets/i18n.js?v=1"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>

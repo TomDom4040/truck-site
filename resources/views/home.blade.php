@@ -33,10 +33,10 @@
           </a>
         </div>
         <div class="text-blocks">
-          <a class="text-block route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener">Location: 📍 5800 Sheila St, Commerce, CA</a>
+          <a class="text-block route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener"><span data-i18n="home.location">Location:</span> 📍 5800 Sheila St, Commerce, CA</a>
           <div class="text-block">☎️ (747) 329-9691</div>
           <div class="cta-wrap">
-            <a href="/form" class="button">CALCULATE THE REPAIR COST 💰</a>
+            <a href="/form" class="button" data-i18n="home.calc">CALCULATE THE REPAIR COST 💰</a>
           </div>
         </div>
       </div>

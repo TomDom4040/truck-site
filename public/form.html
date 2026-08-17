@@ -110,22 +110,22 @@
 <div class="container">
   <button class="back" onclick="window.location.href='index.html'">Back to Main Page</button>
 
-  <h1>Repair Request</h1>
+  <h1 data-i18n="form.title">Repair Request</h1>
 
   <form id="f">
-    <label>1) Write the exact address where the repair needs to be done: *</label>
+    <label data-i18n="form.q1">1) Write the exact address where the repair needs to be done: *</label>
     <textarea id="address" placeholder="123 Main St, Los Angeles, CA" required></textarea>
 
-    <label>2) Describe the breakdown: *</label>
-    <textarea id="breakdown" placeholder="Describe the issue briefly..." required></textarea>
+    <label data-i18n="form.q2">2) Describe the breakdown: *</label>
+    <textarea id="breakdown" placeholder="Describe the issue briefly..." data-i18n-ph="form.ph2" required></textarea>
 
-    <label>3) Your email: *</label>
+    <label data-i18n="form.q3">3) Your email: *</label>
     <input id="email" type="email" autocomplete="email" autocapitalize="off" placeholder="name@example.com" required>
 
-    <label>4) Your phone: *</label>
+    <label data-i18n="form.q4">4) Your phone: *</label>
     <input id="phone" autocomplete="tel" inputmode="tel" placeholder="+1 (555) 123-4567" required>
 
-    <button id="submitBtn" type="submit" class="btn">Submit</button>
+    <button id="submitBtn" type="submit" class="btn" data-i18n="form.submit">Submit</button>
     <div id="msg"></div>
   </form>
 </div>

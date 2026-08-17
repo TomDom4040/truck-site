@@ -52,11 +52,9 @@
     position: absolute; left: 2px; top: 0;
   }
   /* Русский блок — второй, отделён чертой */
-  .about-page .lang-ru{
-    margin-top: 22px !important;
-    padding-top: 18px !important;
-    border-top: 1px solid rgba(0,0,0,.12);
-  }
+  /* Блоки показываются по одному (переключатель языка), поэтому черта
+     сверху и отступ русскому блоку больше не нужны. */
+  .about-page .lang-ru{ margin-top: 0 !important; padding-top: 0 !important; }
   .about-page .lang-ru h2{ margin-top: 0 !important; }
   /* На телефоне текст чуть мельче — 16px вместо 17px.
      Порог 639px тот же, что у мобильной вёрстки всего сайта. */
@@ -83,7 +81,7 @@
 
   <main class="page-body">
     <div class="container">
-      <article lang="en">
+      <article lang="en" data-lang-block="en">
         <h1>About Us<svg class="flag" viewBox="0 0 38 20" width="25" height="13" aria-hidden="true"><rect x="0" y="0.000" width="38" height="1.538" fill="#b22234"/><rect x="0" y="1.538" width="38" height="1.538" fill="#fff"/><rect x="0" y="3.077" width="38" height="1.538" fill="#b22234"/><rect x="0" y="4.615" width="38" height="1.538" fill="#fff"/><rect x="0" y="6.154" width="38" height="1.538" fill="#b22234"/><rect x="0" y="7.692" width="38" height="1.538" fill="#fff"/><rect x="0" y="9.231" width="38" height="1.538" fill="#b22234"/><rect x="0" y="10.769" width="38" height="1.538" fill="#fff"/><rect x="0" y="12.308" width="38" height="1.538" fill="#b22234"/><rect x="0" y="13.846" width="38" height="1.538" fill="#fff"/><rect x="0" y="15.385" width="38" height="1.538" fill="#b22234"/><rect x="0" y="16.923" width="38" height="1.538" fill="#fff"/><rect x="0" y="18.462" width="38" height="1.538" fill="#b22234"/><rect x="0" y="0" width="15.2" height="10.769" fill="#3c3b6e"/><circle cx="1.40" cy="1.20" r="0.42" fill="#fff"/><circle cx="4.50" cy="1.20" r="0.42" fill="#fff"/><circle cx="7.60" cy="1.20" r="0.42" fill="#fff"/><circle cx="10.70" cy="1.20" r="0.42" fill="#fff"/><circle cx="13.80" cy="1.20" r="0.42" fill="#fff"/><circle cx="2.95" cy="2.72" r="0.42" fill="#fff"/><circle cx="6.05" cy="2.72" r="0.42" fill="#fff"/><circle cx="9.15" cy="2.72" r="0.42" fill="#fff"/><circle cx="12.25" cy="2.72" r="0.42" fill="#fff"/><circle cx="1.40" cy="4.24" r="0.42" fill="#fff"/><circle cx="4.50" cy="4.24" r="0.42" fill="#fff"/><circle cx="7.60" cy="4.24" r="0.42" fill="#fff"/><circle cx="10.70" cy="4.24" r="0.42" fill="#fff"/><circle cx="13.80" cy="4.24" r="0.42" fill="#fff"/><circle cx="2.95" cy="5.76" r="0.42" fill="#fff"/><circle cx="6.05" cy="5.76" r="0.42" fill="#fff"/><circle cx="9.15" cy="5.76" r="0.42" fill="#fff"/><circle cx="12.25" cy="5.76" r="0.42" fill="#fff"/><circle cx="1.40" cy="7.28" r="0.42" fill="#fff"/><circle cx="4.50" cy="7.28" r="0.42" fill="#fff"/><circle cx="7.60" cy="7.28" r="0.42" fill="#fff"/><circle cx="10.70" cy="7.28" r="0.42" fill="#fff"/><circle cx="13.80" cy="7.28" r="0.42" fill="#fff"/><circle cx="2.95" cy="8.80" r="0.42" fill="#fff"/><circle cx="6.05" cy="8.80" r="0.42" fill="#fff"/><circle cx="9.15" cy="8.80" r="0.42" fill="#fff"/><circle cx="12.25" cy="8.80" r="0.42" fill="#fff"/><circle cx="1.40" cy="10.32" r="0.42" fill="#fff"/><circle cx="4.50" cy="10.32" r="0.42" fill="#fff"/><circle cx="7.60" cy="10.32" r="0.42" fill="#fff"/><circle cx="10.70" cy="10.32" r="0.42" fill="#fff"/><circle cx="13.80" cy="10.32" r="0.42" fill="#fff"/></svg></h1>
         <p>We are an experienced truck and trailer repair team in Los Angeles.</p>
         <p class="lead-in">We handle all types of work:</p>
@@ -101,7 +99,7 @@
         </ul>
       </article>
 
-      <article class="lang-ru" lang="ru">
+      <article class="lang-ru" lang="ru" data-lang-block="ru">
         <h2>О нас<svg class="flag" viewBox="0 0 30 20" width="20" height="13" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect y="6.667" width="30" height="6.667" fill="#0039a6"/><rect y="13.333" width="30" height="6.667" fill="#d52b1e"/><rect x="0" y="0" width="30" height="20" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="0.6"/></svg></h2>
         <p>Мы опытная команда по ремонту траков и трейлеров в Лос-Анджелесе.</p>
         <p class="lead-in">Мы выполняем все виды работ:</p>
