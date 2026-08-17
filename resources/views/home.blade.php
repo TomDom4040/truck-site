@@ -53,9 +53,9 @@
             <svg class="map-arrow" viewBox="0 0 1418 1149" aria-hidden="true">
               <!-- translate — сдвиг всей стрелки; координаты внутри считались от острия метки -->
               <g transform="translate(-22 0)">
-                <path d="M445.5 542 Q553 518 601.5 521.6" fill="none" stroke="#d85140"
+                <path d="M445.5 542 Q553 518 601.5 521.6" fill="none" stroke="#ef3b2a"
                       stroke-width="16" stroke-linecap="round"/>
-                <path d="M590.6 501.6 L660.5 526 L587.8 539.8 Z" fill="#d85140"/>
+                <path d="M590.6 501.6 L660.5 526 L587.8 539.8 Z" fill="#ef3b2a"/>
               </g>
             </svg>
           </a>
