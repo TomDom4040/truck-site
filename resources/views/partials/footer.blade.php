@@ -54,7 +54,7 @@
   .site-footer .footer-text{ margin:0; }
 </style>
 
-<script src="/assets/i18n.js?v=7"></script>
+<script src="/assets/i18n.js?v=8"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>

@@ -71,7 +71,7 @@
         </div>
         <div class="text-blocks">
           <a class="text-block route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener"><span data-i18n="home.location">Location:</span> 📍 5800 Sheila St, Commerce, CA</a>
-          <div class="text-block">☎️ (747) 329-9691</div>
+          <div class="text-block"><span data-i18n="home.call">Call:</span> ☎️ (747) 329-9691</div>
           {{-- Список услуг переехал сюда из подвала: тот же серый баннер,
                что у адреса и телефона. Якорь #services ведёт именно сюда. --}}
           <div class="text-block services-block" id="services">
