@@ -4,9 +4,9 @@
      Отступы те же, что были у кнопки, — соседние элементы шапки не съезжают. */
   .lang-switch{ display:inline-flex; gap:6px; margin-left:-6px; }
   .lang-btn{
-    font: inherit; font-weight:700; font-size:14px; line-height:1;
+    font: inherit; font-weight:700; font-size:16px; line-height:1;
     color:#fff; background:transparent; cursor:pointer;
-    border:1px solid rgba(255,255,255,.55); border-radius:6px; padding:6px 10px;
+    border:1px solid rgba(255,255,255,.55); border-radius:6px; padding:8px 13px;
   }
   .lang-btn.on{ background:#fff; color:#17739c; border-color:#fff; }   /* выбранный язык */
   .lang-label{
@@ -23,7 +23,7 @@
     {{-- На главной вместо красной кнопки — надпись «language:».
          На остальных страницах кнопка «Request Repair Cost» осталась. --}}
     @if (request()->is('/'))
-      <span class="lang-label">language:</span>
+      <span class="lang-label">Language:</span>
       <span class="lang-switch">
         <button type="button" class="lang-btn" data-lang="ru">Ru</button>
         <button type="button" class="lang-btn" data-lang="en">En</button>
