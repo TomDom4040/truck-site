@@ -34,8 +34,9 @@
      поэтому маркеры уводим внутрь строки. */
   .about-page .services-list{
     list-style: none !important;
-    margin: 6px 0 0 !important;
+    margin: 0 !important;             /* список идёт сразу под своей строкой-вступлением */
   }
+  .about-page .container p.lead-in{ margin-bottom: 0 !important; }
   .about-page .services-list li{
     position: relative;
     padding-left: 18px !important;   /* перебиваем общий лок выше */
@@ -62,7 +63,7 @@
       <article lang="en">
         <h1>About Us</h1>
         <p>We are an experienced truck and trailer repair team in Los Angeles.</p>
-        <p>We handle all types of work:</p>
+        <p class="lead-in">We handle all types of work:</p>
         <ul class="services-list">
           <li>valve repair</li>
           <li>engine repair</li>
@@ -80,7 +81,7 @@
       <article class="lang-ru" lang="ru">
         <h2>О нас</h2>
         <p>Мы опытная команда по ремонту траков и трейлеров в Лос-Анджелесе.</p>
-        <p>Мы выполняем все виды работ:</p>
+        <p class="lead-in">Мы выполняем все виды работ:</p>
         <ul class="services-list">
           <li>ремонт клапанов</li>
           <li>ремонт двигателя</li>
