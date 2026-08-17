@@ -27,11 +27,10 @@
 
     // главная
     'home.location': 'Адрес:',
-    'home.calc':     'РАССЧИТАТЬ СТОИМОСТЬ РЕМОНТА 💰',
+    'home.services': 'Наши услуги:',
 
     // подвал
     'footer.tagline':    'Ремонт траков, пикапов и трейлеров в Лос-Анджелесе',
-    'footer.services':   'Услуги:',
     'footer.diag':       'Диагностика',
     'footer.dpf':        'Обслуживание DPF',
     'footer.electrical': 'Ремонт электрики',

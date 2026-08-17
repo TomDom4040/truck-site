@@ -75,7 +75,7 @@
           {{-- Список услуг переехал сюда из подвала: тот же серый баннер,
                что у адреса и телефона. Якорь #services ведёт именно сюда. --}}
           <div class="text-block services-block" id="services">
-            <div class="services-head" data-i18n="footer.services">Services:</div>
+            <div class="services-head" data-i18n="home.services">Our Services:</div>
             <ul class="services-list">
               <li data-i18n="footer.diag">Diagnostics</li>
               <li data-i18n="footer.dpf">DPF Service</li>
