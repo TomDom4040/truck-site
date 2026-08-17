@@ -21,6 +21,10 @@
           // снять оболочку и встроенные стили
           $html = preg_replace('~<!DOCTYPE.*?>|</?html.*?>|<head[\s\S]*?</head>|</?body.*?>~i', '', $html);
           $html = preg_replace('~<(header|footer|nav)[\s\S]*?</\1>~i', '', $html);
+          // В form.html теги <meta> и <title> лежат БЕЗ <head>, поэтому правило выше
+          // их не снимало. Свой viewport оттуда переопределял наш и возвращал
+          // масштабирование страницы — вырезаем их отдельно.
+          $html = preg_replace('~<meta[^>]*>|<title[\s\S]*?</title>~i', '', $html);
           $html = preg_replace('~<style[\s\S]*?</style>~i', '', $html);
 
           // убрать кнопку "Back to Main Page" в любом виде
