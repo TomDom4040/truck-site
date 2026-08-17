@@ -59,6 +59,9 @@
       {{-- Главная: два пункта со значками. На компьютере они всегда в синей строке,
            на телефоне — в окошке под кнопкой MENU (см. ниже). --}}
       <nav class="main-nav" aria-label="Primary">
+        <a href="/about" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i><span data-i18n="nav.about">About Us</span>
+        </a>
         <a href="#services" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">
           <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span data-i18n="nav.ourServices">Our Services</span>
         </a>
@@ -80,6 +83,7 @@
   @if (request()->is('/'))
     {{-- Окошко живёт внутри .header: от него и считается его положение --}}
   <div class="menu-pop" id="mobileMenu">
+    <a href="/about"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span data-i18n="nav.about">About Us</span></a>
     <a href="#services"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span data-i18n="nav.ourServices">Our Services</span></a>
     <a href="#contact"><i class="fa-solid fa-phone" aria-hidden="true"></i><span data-i18n="nav.ourContacts">Our Contacts</span></a>
   </div>
