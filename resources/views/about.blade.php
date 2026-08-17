@@ -13,6 +13,28 @@
     padding-left:0 !important;
     text-indent:0 !important;
   }
+  /* Список услуг: правило выше сносит отступ у <ul> и маркеры уезжают за край,
+     поэтому маркеры уводим внутрь строки. */
+  .about-page .services-list{
+    list-style: none !important;
+    margin: 10px 0 0 !important;
+  }
+  .about-page .services-list li{
+    position: relative;
+    padding-left: 18px !important;   /* перебиваем общий лок выше */
+    margin-bottom: 4px !important;
+  }
+  .about-page .services-list li::before{
+    content: '—';
+    position: absolute; left: 0; top: 0;
+  }
+  /* Русский блок — второй, отделён чертой */
+  .about-page .lang-ru{
+    margin-top: 34px !important;
+    padding-top: 26px !important;
+    border-top: 1px solid rgba(0,0,0,.12);
+  }
+  .about-page .lang-ru h2{ margin-top: 0 !important; }
 </style>
 </head>
 <body class="page-wrap about-page">
@@ -20,10 +42,40 @@
 
   <main class="page-body">
     <div class="container">
-      <article>
+      <article lang="en">
         <h1>About Us</h1>
-        <p>We are a professional mobile truck repair company serving Los Angeles and surrounding areas. Our team of experienced mechanics provides on-site diagnostics, brake repairs, electrical work, oil changes, and pneumatic system services.</p>
-        <p>Our mission is to get you back on the road quickly, safely, and with reliable service you can trust.</p>
+        <p>We are an experienced truck and trailer repair team in Los Angeles.</p>
+        <p>We handle all types of work:</p>
+        <ul class="services-list">
+          <li>valve repair</li>
+          <li>engine repair</li>
+          <li>APU diagnostics and repair</li>
+          <li>computer diagnostics</li>
+          <li>DEF system repair</li>
+          <li>cooling system repair</li>
+          <li>air conditioning (A/C) repair</li>
+          <li>fuel system repair</li>
+          <li>clutch replacement</li>
+          <li>and more</li>
+        </ul>
+      </article>
+
+      <article class="lang-ru" lang="ru">
+        <h2>О нас</h2>
+        <p>Мы опытная команда по ремонту траков и трейлеров в Лос-Анджелесе.</p>
+        <p>Мы выполняем все виды работ:</p>
+        <ul class="services-list">
+          <li>ремонт клапанов</li>
+          <li>ремонт двигателя</li>
+          <li>диагностика и ремонт APU</li>
+          <li>компьютерная диагностика</li>
+          <li>ремонт DEF</li>
+          <li>ремонт систем охлаждения</li>
+          <li>ремонт систем кондиционирования (A/C)</li>
+          <li>ремонт топливной системы</li>
+          <li>замена сцепления</li>
+          <li>другое</li>
+        </ul>
       </article>
     </div>
   </main>
