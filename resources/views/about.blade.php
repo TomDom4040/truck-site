@@ -54,6 +54,11 @@
     border-top: 1px solid rgba(0,0,0,.12);
   }
   .about-page .lang-ru h2{ margin-top: 0 !important; }
+  /* На телефоне текст чуть мельче — 16px вместо 17px.
+     Порог 639px тот же, что у мобильной вёрстки всего сайта. */
+  @media (max-width: 639px){
+    .about-page .container article{ font-size: 16px; }
+  }
   /* Флажки рисуем сами: эмодзи-флаги на Windows показываются буквами «US»/«RU» */
   .about-page .flag{
     /* в CSS сайта у всех svg стоит display:block — без этой строки
