@@ -31,7 +31,11 @@
   /* Баннер услуг — список без родных маркеров, точки рисуем сами */
   .services-block .services-head{ font-weight: 700; margin-bottom: 6px; }
   .services-block .services-list{ list-style: none; margin: 0; padding: 0; }
-  .services-block .services-list li{ position: relative; padding-left: 16px; margin-bottom: 2px; }
+  /* Длинный селектор нарочно: в общем CSS есть правило, обнуляющее padding-left
+     у всего внутри .container — обычный отступ оно съедает вместе с маркером. */
+  .page-body .container .services-block .services-list li{
+    position: relative; padding-left: 16px !important; margin-bottom: 2px;
+  }
   .services-block .services-list li::before{ content: '•'; position: absolute; left: 2px; }
   @keyframes map-arrow-blink{ 0%, 49.9%{ opacity: 1 } 50%, 100%{ opacity: 0 } }
 </style>
