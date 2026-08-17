@@ -16,7 +16,7 @@
 
   var RU = {
     // шапка
-    'nav.home':      'Главная',
+    'nav.home':      'На главную',
     'nav.about':     'О нас',
     'nav.services':  'Услуги',
     'nav.contact':   'Контакты',

@@ -41,11 +41,23 @@
     white-space: nowrap;
   }
 </style>
+@php
+  // Набор пунктов одинаковый на всех страницах, меняется только первый:
+  // на главной он ведёт «О нас», на остальных страницах — обратно на главную.
+  $isHome = request()->is('/');
+  $navItems = [
+    $isHome
+      ? ['href' => '/about', 'icon' => 'fa-circle-info', 'key' => 'nav.about', 'en' => 'About Us']
+      : ['href' => '/',      'icon' => 'fa-house',       'key' => 'nav.home',  'en' => 'Home'],
+    ['href' => '#services', 'icon' => 'fa-screwdriver-wrench', 'key' => 'nav.ourServices', 'en' => 'Our Services'],
+    ['href' => '#contact',  'icon' => 'fa-phone',              'key' => 'nav.ourContacts', 'en' => 'Our Contacts'],
+  ];
+@endphp
 <div class="header">
   <div class="header-inner content-row">
-    {{-- На главной вместо красной кнопки — надпись «language:».
-         На остальных страницах кнопка «Request Repair Cost» осталась. --}}
-    @if (request()->is('/'))
+    {{-- На главной вместо красной кнопки — надпись «Language:» с переключателем.
+         На остальных страницах кнопка «Request Repair Cost». --}}
+    @if ($isHome)
       <span class="lang-label">Language:</span>
       <span class="lang-switch">
         <button type="button" class="lang-btn" data-lang="ru">Ru</button>
@@ -55,51 +67,27 @@
       <a class="cta-btn" href="/form" data-i18n="cta.request">Request Repair Cost</a>
     @endif
     <div class="spacer"></div>
-    @if (request()->is('/'))
-      {{-- Главная: два пункта со значками. На компьютере они всегда в синей строке,
-           на телефоне — в окошке под кнопкой MENU (см. ниже). --}}
-      <nav class="main-nav" aria-label="Primary">
-        <a href="/about" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">
-          <i class="fa-solid fa-circle-info" aria-hidden="true"></i><span data-i18n="nav.about">About Us</span>
+
+    {{-- На компьютере пункты всегда в синей строке --}}
+    <nav class="main-nav" aria-label="Primary">
+      @foreach ($navItems as $it)
+        <a href="{{ $it['href'] }}" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">
+          <i class="fa-solid {{ $it['icon'] }}" aria-hidden="true"></i><span data-i18n="{{ $it['key'] }}">{{ $it['en'] }}</span>
         </a>
-        <a href="#services" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">
-          <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span data-i18n="nav.ourServices">Our Services</span>
-        </a>
-        <a href="#contact" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i><span data-i18n="nav.ourContacts">Our Contacts</span>
-        </a>
-      </nav>
-    @else
-      <nav class="main-nav" aria-label="Primary">
-        <a href="/" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.home">Home</a>
-        <a href="/about" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.about">About Us</a>
-        <a href="/#services" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.services">Services</a>
-        <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.contact">Contact Us</a>
-      </nav>
-    @endif
+      @endforeach
+    </nav>
+
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" data-i18n="nav.menu">MENU</button>
   </div>
 
-  @if (request()->is('/'))
-    {{-- Окошко живёт внутри .header: от него и считается его положение --}}
+  {{-- На телефоне те же пункты — в окошке под кнопкой MENU.
+       Окошко лежит ВНУТРИ .header: от него считается его положение. --}}
   <div class="menu-pop" id="mobileMenu">
-    <a href="/about"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span data-i18n="nav.about">About Us</span></a>
-    <a href="#services"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span data-i18n="nav.ourServices">Our Services</span></a>
-    <a href="#contact"><i class="fa-solid fa-phone" aria-hidden="true"></i><span data-i18n="nav.ourContacts">Our Contacts</span></a>
+    @foreach ($navItems as $it)
+      <a href="{{ $it['href'] }}"><i class="fa-solid {{ $it['icon'] }}" aria-hidden="true"></i><span data-i18n="{{ $it['key'] }}">{{ $it['en'] }}</span></a>
+    @endforeach
   </div>
-  @endif
 </div>
-
-<!-- Mobile menu -->
-@if (!request()->is('/'))
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-inner content-row" style="flex-direction:column; gap:8px; align-items:stretch;">
-    <a href="/"        style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.home">Home</a>
-    <a href="/about"   style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.about">About Us</a>
-    <a href="/#services"style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.services">Services</a>
-    <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0;" data-i18n="nav.contact">Contact Us</a>
-  </div>
-</div>@endif
 
 <script>
   // Окошко меню закрывается тапом мимо него
