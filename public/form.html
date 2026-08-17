@@ -108,7 +108,7 @@
 
 <!-- ВАЖНО: всё, что должно быть выровнено одинаково, кладём в .container -->
 <div class="container">
-  <button class="back" onclick="window.location.href='index.html'">Back to Main Page</button>
+  <button class="back" onclick="window.location.href='index.html'" data-i18n="form.back">Back to Main Page</button>
 
   <h1 data-i18n="form.title">Repair Request</h1>
 
@@ -137,7 +137,7 @@ const msg = document.getElementById('msg');
 
 f.addEventListener('submit', async (e)=>{
   e.preventDefault();
-  btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
+  btn.disabled = true; btn.textContent = (window.t||function(k,f){return f})('form.sending', 'Sending…'); msg.textContent = '';
   try{
     const payload = {
       address: document.getElementById('address').value.trim(),
@@ -152,13 +152,13 @@ f.addEventListener('submit', async (e)=>{
     });
     const data = await r.json().catch(()=>({}));
     if(!r.ok || data.ok===false) throw new Error(data.error || 'Send failed');
-    msg.className='ok'; msg.textContent='Thanks! Your request was sent.';
+    msg.className='ok'; msg.textContent=(window.t||function(k,f){return f})('form.ok', 'Thanks! Your request was sent.');
     f.reset();
   }catch(err){
     console.error(err);
-    msg.className='err'; msg.textContent='Could not send right now. Please try again.';
+    msg.className='err'; msg.textContent=(window.t||function(k,f){return f})('form.err', 'Could not send right now. Please try again.');
   }finally{
-    btn.disabled = false; btn.textContent = 'Submit';
+    btn.disabled = false; btn.textContent = (window.t||function(k,f){return f})('form.submit', 'Submit');
   }
 });
 </script>

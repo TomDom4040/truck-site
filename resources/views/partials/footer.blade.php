@@ -70,7 +70,7 @@
   </div>
 </footer>
 
-<script src="/assets/i18n.js?v=1"></script>
+<script src="/assets/i18n.js?v=2"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>

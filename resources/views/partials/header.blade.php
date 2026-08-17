@@ -38,7 +38,7 @@
       <a href="/#services" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.services">Services</a>
       <a href="/#contact" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;" data-i18n="nav.contact">Contact Us</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" data-i18n="nav.menu">MENU</button>
   </div>
 </div>
 

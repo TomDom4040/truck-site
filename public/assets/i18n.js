@@ -20,6 +20,7 @@
     'nav.about':     'О нас',
     'nav.services':  'Услуги',
     'nav.contact':   'Контакты',
+    'nav.menu':      'МЕНЮ',
     'cta.request':   'Рассчитать стоимость',
 
     // главная
@@ -51,7 +52,11 @@
     'form.q3':      '3) Ваш email: *',
     'form.q4':      '4) Ваш телефон: *',
     'form.submit':  'Отправить',
-    'form.ph2':     'Кратко опишите проблему...'
+    'form.ph2':     'Кратко опишите проблему...',
+    'form.back':    'На главную',
+    'form.sending': 'Отправляю…',
+    'form.ok':      'Спасибо! Заявка отправлена.',
+    'form.err':     'Сейчас отправить не удалось. Попробуйте ещё раз.'
   };
 
   function saved() {
@@ -89,6 +94,14 @@
   }
 
   function setLang(lang) { remember(lang); apply(lang); }
+
+  /**
+   * Перевод для текстов, которые ставит скрипт (например надпись на кнопке
+   * во время отправки формы). fallback — английский вариант из кода.
+   */
+  window.t = function (key, fallback) {
+    return (saved() === 'ru' && RU[key]) ? RU[key] : fallback;
+  };
 
   function init() {
     apply(saved() === 'ru' ? 'ru' : 'en');   // по умолчанию сайт английский
