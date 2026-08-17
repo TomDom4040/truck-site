@@ -6,7 +6,7 @@
     color: var(--text-on-dark, #fff);
     font-weight: 700;
     letter-spacing: .5px;
-    padding: 8px 14px 8px 0;
+    padding: 8px 14px;   /* как у кнопки: текст стоит на том же месте, где стоял её текст */
     display: inline-block;
     white-space: nowrap;
   }
