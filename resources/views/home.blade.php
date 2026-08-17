@@ -28,6 +28,11 @@
   }
   /* Мигание резкое, без плавного затухания: значение держится половину цикла
      и переключается скачком (steps + постоянные значения в кадрах). */
+  /* Баннер услуг — список без родных маркеров, точки рисуем сами */
+  .services-block .services-head{ font-weight: 700; margin-bottom: 6px; }
+  .services-block .services-list{ list-style: none; margin: 0; padding: 0; }
+  .services-block .services-list li{ position: relative; padding-left: 16px; margin-bottom: 2px; }
+  .services-block .services-list li::before{ content: '•'; position: absolute; left: 2px; }
   @keyframes map-arrow-blink{ 0%, 49.9%{ opacity: 1 } 50%, 100%{ opacity: 0 } }
 </style>
 </head>
@@ -63,8 +68,18 @@
         <div class="text-blocks">
           <a class="text-block route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener"><span data-i18n="home.location">Location:</span> 📍 5800 Sheila St, Commerce, CA</a>
           <div class="text-block">☎️ (747) 329-9691</div>
-          <div class="cta-wrap">
-            <a href="/form" class="button" data-i18n="home.calc">CALCULATE THE REPAIR COST 💰</a>
+          {{-- Список услуг переехал сюда из подвала: тот же серый баннер,
+               что у адреса и телефона. Якорь #services ведёт именно сюда. --}}
+          <div class="text-block services-block" id="services">
+            <div class="services-head" data-i18n="footer.services">Services:</div>
+            <ul class="services-list">
+              <li data-i18n="footer.diag">Diagnostics</li>
+              <li data-i18n="footer.dpf">DPF Service</li>
+              <li data-i18n="footer.electrical">Electrical Repair</li>
+              <li data-i18n="footer.oil">Oil Change</li>
+              <li data-i18n="footer.brakes">Brake Jobs</li>
+              <li data-i18n="footer.air">Air System Repair</li>
+            </ul>
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@
     $isHome
       ? ['href' => '/about', 'icon' => 'fa-circle-info', 'key' => 'nav.about', 'en' => 'About Us']
       : ['href' => '/',      'icon' => 'fa-house',       'key' => 'nav.home',  'en' => 'Home'],
-    ['href' => '#services', 'icon' => 'fa-screwdriver-wrench', 'key' => 'nav.ourServices', 'en' => 'Our Services'],
+    ['href' => $isHome ? '#services' : '/#services', 'icon' => 'fa-screwdriver-wrench', 'key' => 'nav.ourServices', 'en' => 'Our Services'],
     ['href' => '#contact',  'icon' => 'fa-phone',              'key' => 'nav.ourContacts', 'en' => 'Our Contacts'],
   ];
 @endphp

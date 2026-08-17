@@ -7,19 +7,6 @@
       <p class="footer-text" data-i18n="footer.tagline">Truck, pickup and trailer repair in Los Angeles</p>
     </section>
 
-    <!-- 2. Услуги -->
-    <section id="services">
-      <h3 class="footer-title" data-i18n="footer.services">Services:</h3>
-      <ul class="footer-list">
-        <li data-i18n="footer.diag">• Diagnostics</li>
-        <li data-i18n="footer.dpf">• DPF Service</li>
-        <li data-i18n="footer.electrical">• Electrical Repair</li>
-        <li data-i18n="footer.oil">• Oil Change</li>
-        <li data-i18n="footer.brakes">• Brake Jobs</li>
-        <li data-i18n="footer.air">• Air System Repair</li>
-      </ul>
-    </section>
-
     <!-- 3. Контакты: номер и почта не переводим, только подписи -->
     <section id="contact">
       <h3 class="footer-title" data-i18n="footer.contacts">Our Contacts:</h3>
@@ -67,7 +54,7 @@
   .site-footer .footer-text{ margin:0; }
 </style>
 
-<script src="/assets/i18n.js?v=5"></script>
+<script src="/assets/i18n.js?v=6"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
@@ -76,10 +63,20 @@
     // прокрутку, а якорь в адресе (после тапа по «Our Services») не утаскивает
     // в подвал при обновлении.
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.addEventListener('load', function () { window.scrollTo(0, 0); });
+    if (!location.hash) window.addEventListener('load', function () { window.scrollTo(0, 0); });
+    // Пришли по ссылке с якорем (например «Our Services» с другой страницы) —
+    // доезжаем до нужного блока и сразу чистим адрес: следующее обновление
+    // страницы снова откроет её сверху.
     if (location.hash) {
+      var target = document.getElementById(location.hash.slice(1));
       history.replaceState(null, '', location.pathname + location.search);
-      window.scrollTo(0, 0);
+      if (target) {
+        window.addEventListener('load', function () {
+          target.scrollIntoView({ block: 'start' });
+        });
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
 
     // Ссылки-якоря прокручивают плавно и НЕ оставляют # в адресе,
