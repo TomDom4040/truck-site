@@ -6,7 +6,13 @@
   <!-- Страница не масштабируется: двойной тап больше не увеличивает.
        touch-action:manipulation — это как раз то, что понимает Safari на айфоне
        (сам по себе user-scalable=no он игнорирует). -->
-  <style>html{ touch-action: manipulation; -webkit-text-size-adjust: 100%; }</style>
+  <style>
+    /* touch-action НЕ наследуется: правило на html гасило двойной тап только
+       на самом html, а внутри подвала и других блоков он снова работал.
+       Поэтому вешаем на все элементы. */
+    *{ touch-action: manipulation; }
+    html{ -webkit-text-size-adjust: 100%; }
+  </style>
   <title>About Us - Mobile Truck Repair</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/assets/app.20260813l.css">
