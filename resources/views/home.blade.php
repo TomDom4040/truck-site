@@ -43,9 +43,12 @@
           <a class="route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener" aria-label="Build a route to 5800 Sheila St, Commerce, CA">
             <img src="/images/image.map.png?v=4" alt="Service area map" />
             <svg class="map-arrow" viewBox="0 0 1418 1149" aria-hidden="true">
-              <path d="M445.5 542 Q553 518 601.5 521.6" fill="none" stroke="#d85140"
-                    stroke-width="16" stroke-linecap="round"/>
-              <path d="M590.6 501.6 L660.5 526 L587.8 539.8 Z" fill="#d85140"/>
+              <!-- translate — сдвиг всей стрелки; координаты внутри считались от острия метки -->
+              <g transform="translate(-22 0)">
+                <path d="M445.5 542 Q553 518 601.5 521.6" fill="none" stroke="#d85140"
+                      stroke-width="16" stroke-linecap="round"/>
+                <path d="M590.6 501.6 L660.5 526 L587.8 539.8 Z" fill="#d85140"/>
+              </g>
             </svg>
           </a>
         </div>
