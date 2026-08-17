@@ -13,8 +13,20 @@
     padding-left:0 !important;
     text-indent:0 !important;
   }
+  /* Шрифт: родной системный (на маке и айфоне это San Francisco — он мягче
+     и ровнее, чем Helvetica, которой страница довольствовалась раньше),
+     чуть крупнее, мягкий чёрный вместо чистого, и длина строки ограничена —
+     глазу тяжело возвращаться к началу очень длинной строки. */
+  .about-page .container article{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    color: #23282d;
+    max-width: 62ch;
+    -webkit-font-smoothing: antialiased;
+  }
   /* Строки идут плотнее: и сама высота строки, и просветы между абзацами */
-  .about-page .container article{ line-height: 1.3 !important; }
+  .about-page .container article{ line-height: 1.32 !important; }
   .about-page .container p{ margin: 0 0 8px !important; }
   .about-page .container h1,
   .about-page .container h2{ margin: 0 0 10px !important; line-height: 1.2 !important; }
