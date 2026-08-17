@@ -1,76 +1,64 @@
 <!-- Site footer -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <!-- 1. Brand / description / socials -->
+    <!-- 1. Название и описание -->
     <section>
-      <h3 class="footer-title">LES Truck Repair Service</h3>
-      <p class="footer-text" data-i18n="footer.tagline">Mobile Semi-Truck, Pickup Truck &amp; Trailer Repair Service in Los Angeles area</p>
-      <div class="footer-icon-row">
-        <a class="footer-icon" href="https://www.facebook.com/groups/1061231975929415/?ref=share_group_link&mibextid=wwXIfr" aria-label="Facebook" target="_blank">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a class="footer-icon" href="https://www.instagram.com/car_mats_pro?igsh=NTc4MTIwNjQ2YQ==" aria-label="Instagram" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a class="footer-icon" href="https://chat.whatsapp.com/H6x5CyGLMSD6oUa3UmopQo?mode=ac_t" aria-label="WhatsApp" target="_blank">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a class="footer-icon" href="https://t.me/Trucks_job" aria-label="Telegram" target="_blank">
-          <i class="fab fa-telegram"></i>
-        </a>
-      </div>
+      <h3 class="footer-title">Profi Truck Repair Service</h3>
+      <p class="footer-text" data-i18n="footer.tagline">Truck, pickup and trailer repair in Los Angeles</p>
     </section>
 
-    <!-- 2. Services -->
+    <!-- 2. Услуги -->
     <section id="services">
-      <h3 class="footer-title" data-i18n="footer.services">Services</h3>
+      <h3 class="footer-title" data-i18n="footer.services">Services:</h3>
       <ul class="footer-list">
-        <li data-i18n="footer.diag">● Diagnostics</li>
-        <li data-i18n="footer.dpf">● DPF Service</li>
-        <li data-i18n="footer.electrical">● Electrical Repair</li>
+        <li data-i18n="footer.diag">• Diagnostics</li>
+        <li data-i18n="footer.dpf">• DPF Service</li>
+        <li data-i18n="footer.electrical">• Electrical Repair</li>
         <li data-i18n="footer.oil">• Oil Change</li>
         <li data-i18n="footer.brakes">• Brake Jobs</li>
         <li data-i18n="footer.air">• Air System Repair</li>
       </ul>
     </section>
 
-    <!-- 3. Contacts -->
+    <!-- 3. Контакты: номер и почта не переводим, только подписи -->
     <section id="contact">
-      <h3 class="footer-title" data-i18n="footer.contacts">Contact Info</h3>
+      <h3 class="footer-title" data-i18n="footer.contacts">Our Contacts:</h3>
       <div class="footer-contact">
-        <div>
-          <div class="label" data-i18n="footer.address">Address</div>
-          <div class="value">9250 Tujunga Ave<br>Sun Valley, CA 91352</div>
+        <div class="value">
+          <span data-i18n="footer.phone">Phone</span> ☎️
+          <a class="footer-link" href="tel:+17473299691">(747) 329-9691</a>
         </div>
-        <div>
-          <div class="label" data-i18n="footer.phone">Phone</div>
-          <div class="value">
-            <a class="footer-link" href="tel:+18184896181">818-423-6473</a><br>
-          </div>
-        </div>
-        <div>
-          <div class="label" data-i18n="footer.email">E-mail</div>
-          <div class="value">
-            <a class="footer-link" href="mailto:people.us20@gmail.com.com">info@MobileTruckepair.com</a>
-          </div>
+        <div class="value">
+          email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
         </div>
       </div>
     </section>
-
-    <!-- 4. Newsletter -->
-    <section>
-      <h3 class="footer-title" data-i18n="footer.newsletter">Newsletter</h3>
-      <p class="footer-text" data-i18n="footer.newsText">Sign up to receive the latest news and special discounts.</p>
-      <a class="footer-cta" href="#newsletter" data-i18n="footer.signup">Sign Up Now ▸</a>
-    </section>
   </div>
 
-  <div class="footer-bottom">
-    Copyright © 2021–<span id="y"></span>. <span data-i18n="footer.rights">All rights reserved.</span>
+  <!-- Соцсети — под колонками, над самой нижней строкой -->
+  <div class="footer-icon-row footer-social">
+    <a class="footer-icon" href="https://www.facebook.com/groups/1061231975929415/?ref=share_group_link&mibextid=wwXIfr" aria-label="Facebook" target="_blank">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a class="footer-icon" href="https://www.instagram.com/car_mats_pro?igsh=NTc4MTIwNjQ2YQ==" aria-label="Instagram" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a class="footer-icon" href="https://chat.whatsapp.com/H6x5CyGLMSD6oUa3UmopQo?mode=ac_t" aria-label="WhatsApp" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a class="footer-icon" href="https://t.me/Trucks_job" aria-label="Telegram" target="_blank">
+      <i class="fab fa-telegram"></i>
+    </a>
   </div>
+
+  <div class="footer-bottom" data-i18n="footer.by">Website by ElkaClub</div>
 </footer>
 
-<script src="/assets/i18n.js?v=3"></script>
+<style>
+  /* соцсети переехали под колонки — ставим по центру с воздухом сверху и снизу */
+  .footer-social{ justify-content:center; gap:18px; margin:6px 0 14px; }
+  .site-footer .footer-contact .value{ margin-bottom:6px; }
+</style>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
