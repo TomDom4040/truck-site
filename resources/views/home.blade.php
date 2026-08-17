@@ -10,6 +10,18 @@
   <title>Mobile Truck Repair in Los Angeles Area</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/assets/app.20260813l.css">
+<style>
+  /* Мигающая стрелка на карте: указывает точно в нижнее остриё метки.
+     Координаты — в единицах самой картинки (1418×1149), поэтому стрелка
+     остаётся на месте при любом размере экрана. */
+  .map .route-link{ position: relative; display: block; }
+  .map-arrow{
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none;              /* тап по карте по-прежнему открывает маршрут */
+    animation: map-arrow-blink .8s ease-in-out infinite;
+  }
+  @keyframes map-arrow-blink{ 0%, 100%{ opacity: 1 } 50%{ opacity: 0 } }
+</style>
 </head>
 <body class="page-wrap">
   @include('partials.header')
@@ -30,6 +42,11 @@
         <div class="map">
           <a class="route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener" aria-label="Build a route to 5800 Sheila St, Commerce, CA">
             <img src="/images/image.map.png?v=4" alt="Service area map" />
+            <svg class="map-arrow" viewBox="0 0 1418 1149" aria-hidden="true">
+              <path d="M445.2 542 Q552.9 500 624.1 517.2" fill="none" stroke="#d85140"
+                    stroke-width="16" stroke-linecap="round"/>
+              <path d="M620.4 492.9 L660.5 526 L609.7 537.2 Z" fill="#d85140"/>
+            </svg>
           </a>
         </div>
         <div class="text-blocks">
