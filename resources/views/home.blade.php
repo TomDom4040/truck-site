@@ -28,6 +28,18 @@
   }
   /* Мигание резкое, без плавного затухания: значение держится половину цикла
      и переключается скачком (steps + постоянные значения в кадрах). */
+  /* Серая строка: текст слева, действие справа */
+  .row-block{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .row-block .row-text{ min-width:0; }
+  .row-btn{
+    flex:none; display:inline-flex; align-items:center; justify-content:center;
+    padding:8px 14px; border-radius:8px; text-decoration:none;
+    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.55);
+    color:#fff; font-weight:700; font-size:15px; line-height:1; white-space:nowrap;
+  }
+  .row-btn:hover{ background:rgba(255,255,255,.28); }
+  .row-btn-icon{ padding:8px 12px; font-size:18px; }
+
   /* Баннер услуг — список без родных маркеров, точки рисуем сами */
   .services-block .services-head{ font-weight: 700; margin-bottom: 6px; }
   .services-block .services-list{ list-style: none; margin: 0; padding: 0; }
@@ -70,8 +82,18 @@
           </a>
         </div>
         <div class="text-blocks">
-          <a class="text-block route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener"><span data-i18n="home.location">Location:</span> 📍 5800 Sheila St, Commerce, CA</a>
-          <div class="text-block"><span data-i18n="home.call">Call:</span> ☎️ (747) 329-9691</div>
+          {{-- Слева сам адрес и номер, справа — действие: маршрут и звонок --}}
+          <div class="text-block row-block">
+            <span class="row-text">📍 5800 Sheila St, Commerce, CA</span>
+            <a class="row-btn row-btn-icon route-link" href="{{ $routeUrl }}" target="_blank" rel="noopener"
+               aria-label="Build a route" title="Build a route">
+              <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="text-block row-block">
+            <span class="row-text">☎️ (747) 329-9691</span>
+            <a class="row-btn" href="tel:+17473299691" data-i18n="home.callBtn">Call</a>
+          </div>
           {{-- Список услуг переехал сюда из подвала: тот же серый баннер,
                что у адреса и телефона. Якорь #services ведёт именно сюда. --}}
           <div class="text-block services-block" id="services">
