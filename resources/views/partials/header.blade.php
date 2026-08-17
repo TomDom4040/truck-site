@@ -12,6 +12,7 @@
   .lang-label{
     color: var(--text-on-dark, #fff);
     font-weight: 700;
+    font-size: 18px;
     letter-spacing: .5px;
     padding: 8px 14px;   /* как у кнопки: текст стоит на том же месте, где стоял её текст */
     display: inline-block;
