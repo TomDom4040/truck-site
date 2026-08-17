@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <!-- Страница не масштабируется: двойной тап больше не увеличивает.
+       touch-action:manipulation — это как раз то, что понимает Safari на айфоне
+       (сам по себе user-scalable=no он игнорирует). -->
+  <style>html{ touch-action: manipulation; -webkit-text-size-adjust: 100%; }</style>
   <title>About Us - Mobile Truck Repair</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/assets/app.20260813l.css">
