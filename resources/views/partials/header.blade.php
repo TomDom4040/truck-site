@@ -1,7 +1,25 @@
 <!-- Blue sticky header -->
+<style>
+  /* Надпись на месте бывшей красной кнопки (только на главной).
+     Отступы те же, что были у кнопки, — соседние элементы шапки не съезжают. */
+  .lang-label{
+    color: var(--text-on-dark, #fff);
+    font-weight: 700;
+    letter-spacing: .5px;
+    padding: 8px 14px 8px 0;
+    display: inline-block;
+    white-space: nowrap;
+  }
+</style>
 <div class="header">
   <div class="header-inner content-row">
-    <a class="cta-btn" href="/form">Request Repair Cost</a>
+    {{-- На главной вместо красной кнопки — надпись «language:».
+         На остальных страницах кнопка «Request Repair Cost» осталась. --}}
+    @if (request()->is('/'))
+      <span class="lang-label">language:</span>
+    @else
+      <a class="cta-btn" href="/form">Request Repair Cost</a>
+    @endif
     <div class="spacer"></div>
     <nav class="main-nav" aria-label="Primary">
       <a href="/" style="color:#fff; text-decoration:none; font-weight:700; margin:0 14px; letter-spacing:0.5px;">Home</a>
