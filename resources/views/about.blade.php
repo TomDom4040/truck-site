@@ -13,16 +13,21 @@
     padding-left:0 !important;
     text-indent:0 !important;
   }
+  /* Строки идут плотнее: и сама высота строки, и просветы между абзацами */
+  .about-page .container article{ line-height: 1.3 !important; }
+  .about-page .container p{ margin: 0 0 8px !important; }
+  .about-page .container h1,
+  .about-page .container h2{ margin: 0 0 10px !important; line-height: 1.2 !important; }
   /* Список услуг: правило выше сносит отступ у <ul> и маркеры уезжают за край,
      поэтому маркеры уводим внутрь строки. */
   .about-page .services-list{
     list-style: none !important;
-    margin: 10px 0 0 !important;
+    margin: 6px 0 0 !important;
   }
   .about-page .services-list li{
     position: relative;
     padding-left: 18px !important;   /* перебиваем общий лок выше */
-    margin-bottom: 4px !important;
+    margin-bottom: 0 !important;
   }
   .about-page .services-list li::before{
     content: '—';
@@ -30,8 +35,8 @@
   }
   /* Русский блок — второй, отделён чертой */
   .about-page .lang-ru{
-    margin-top: 34px !important;
-    padding-top: 26px !important;
+    margin-top: 22px !important;
+    padding-top: 18px !important;
     border-top: 1px solid rgba(0,0,0,.12);
   }
   .about-page .lang-ru h2{ margin-top: 0 !important; }
