@@ -44,8 +44,8 @@
     margin-bottom: 0 !important;
   }
   .about-page .services-list li::before{
-    content: '—';
-    position: absolute; left: 0; top: 0;
+    content: '•';
+    position: absolute; left: 2px; top: 0;
   }
   /* Русский блок — второй, отделён чертой */
   .about-page .lang-ru{
