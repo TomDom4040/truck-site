@@ -56,6 +56,9 @@
   .about-page .lang-ru h2{ margin-top: 0 !important; }
   /* Флажки рисуем сами: эмодзи-флаги на Windows показываются буквами «US»/«RU» */
   .about-page .flag{
+    /* в CSS сайта у всех svg стоит display:block — без этой строки
+       флажок уезжает на строку выше заголовка */
+    display: inline-block !important;
     vertical-align: -1px;
     margin-right: 8px !important;
     border-radius: 2px;
