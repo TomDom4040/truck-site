@@ -28,8 +28,9 @@
   /* Строки идут плотнее: и сама высота строки, и просветы между абзацами */
   .about-page .container article{ line-height: 1.32 !important; }
   .about-page .container p{ margin: 0 0 8px !important; }
+  /* Заголовок вплотную к первой строке текста — и в английском блоке, и в русском */
   .about-page .container h1,
-  .about-page .container h2{ margin: 0 0 10px !important; line-height: 1.2 !important; }
+  .about-page .container h2{ margin: 0 !important; line-height: 1.32 !important; }
   /* Список услуг: правило выше сносит отступ у <ul> и маркеры уезжают за край,
      поэтому маркеры уводим внутрь строки. */
   .about-page .services-list{
