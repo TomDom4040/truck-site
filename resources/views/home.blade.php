@@ -18,9 +18,11 @@
   .map-arrow{
     position: absolute; inset: 0; width: 100%; height: 100%;
     pointer-events: none;              /* тап по карте по-прежнему открывает маршрут */
-    animation: map-arrow-blink .8s ease-in-out infinite;
+    animation: map-arrow-blink .8s steps(1, end) infinite;
   }
-  @keyframes map-arrow-blink{ 0%, 100%{ opacity: 1 } 50%{ opacity: 0 } }
+  /* Мигание резкое, без плавного затухания: значение держится половину цикла
+     и переключается скачком (steps + постоянные значения в кадрах). */
+  @keyframes map-arrow-blink{ 0%, 49.9%{ opacity: 1 } 50%, 100%{ opacity: 0 } }
 </style>
 </head>
 <body class="page-wrap">
