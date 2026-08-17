@@ -75,6 +75,29 @@
 <!-- Shared JS (mobile menu + year) -->
 <script>
   (function () {
+    // Страница всегда открывается сверху: браузер не восстанавливает прежнюю
+    // прокрутку, а якорь в адресе (после тапа по «Our Services») не утаскивает
+    // в подвал при обновлении.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.addEventListener('load', function () { window.scrollTo(0, 0); });
+    if (location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+      window.scrollTo(0, 0);
+    }
+
+    // Ссылки-якоря прокручивают плавно и НЕ оставляют # в адресе,
+    // иначе следующее обновление снова прыгнет туда.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var pop = document.querySelector('.menu-pop.open');
+      if (pop) pop.classList.remove('open');
+    });
+
     const btn  = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
     if (btn && menu) {
