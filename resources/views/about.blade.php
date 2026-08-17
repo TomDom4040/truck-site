@@ -58,6 +58,10 @@
      Порог 639px тот же, что у мобильной вёрстки всего сайта. */
   @media (max-width: 639px){
     .about-page .container article{ font-size: 16px; }
+    /* Отступ от левого края экрана. Селектор длинный нарочно: и лок выше,
+       и правило в общем CSS сайта сносят padding-left у всего внутри
+       .container — перебиваем их более точным селектором. */
+    .about-page .page-body .container article{ padding-left: 14px !important; }
   }
   /* Флажки рисуем сами: эмодзи-флаги на Windows показываются буквами «US»/«RU» */
   .about-page .flag{
