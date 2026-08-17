@@ -76,15 +76,18 @@
     @endif
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" data-i18n="nav.menu">MENU</button>
   </div>
-</div>
 
-<!-- Mobile menu -->
-@if (request()->is('/'))
+  @if (request()->is('/'))
+    {{-- Окошко живёт внутри .header: от него и считается его положение --}}
   <div class="menu-pop" id="mobileMenu">
     <a href="#services"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span data-i18n="nav.ourServices">Our Services</span></a>
     <a href="#contact"><i class="fa-solid fa-phone" aria-hidden="true"></i><span data-i18n="nav.ourContacts">Our Contacts</span></a>
   </div>
-@else
+  @endif
+</div>
+
+<!-- Mobile menu -->
+@if (!request()->is('/'))
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner content-row" style="flex-direction:column; gap:8px; align-items:stretch;">
     <a href="/"        style="color:#fff; text-decoration:none; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.2);" data-i18n="nav.home">Home</a>
