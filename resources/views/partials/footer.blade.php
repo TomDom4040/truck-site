@@ -21,7 +21,7 @@
           <a class="footer-link" href="tel:+17473299691">(747) 329-9691</a>
         </div>
         <div class="value">
-          📧 email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
+          <svg class="mail-ico" width="19" height="19" viewBox="0 0 24 24" fill="#e2574c" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v.4l-10 5.6L2 5.9v-.4z"/><path d="M22 8.2V18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.2l9.5 5.3a1 1 0 0 0 1 0L22 8.2z"/></svg> email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
         </div>
         <div class="value">
           📍 <span data-i18n="footer.addr">Our address:</span> 5800 Sheila St, Commerce, CA
@@ -86,6 +86,9 @@
   }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
   .site-footer .footer-title{ margin:0 0 8px; font-size:17px; }
+  /* Конверт рисуем сами: эмодзи 📧 на тёмном фоне блёклый и теряется
+     рядом с красными ☎️ и 📍. Цвет взят из них же. */
+  .mail-ico{ display:inline-block; vertical-align:-3px; }
   .site-footer .footer-list{ list-style:none; margin:0; padding:0; }
   .site-footer .footer-list li{ margin-bottom:4px; }
   .site-footer .footer-text{ margin:0; }
