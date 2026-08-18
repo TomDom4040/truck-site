@@ -64,6 +64,16 @@
   .site-footer{ padding-bottom: calc(104px + env(safe-area-inset-bottom)) !important; }
   @media (min-width: 768px){
     .site-footer{ padding-bottom: 44px !important; }   /* на компьютере столько не нужно */
+    /* Колонки подвала повторяют разметку страницы: левая начинается ровно там же,
+       где левый край карты, правая — там же, где серые плашки. Тогда контакты
+       не вылезают за правый край картинки с траком. */
+    .site-footer .footer-inner{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 21px;
+      padding-left: 36px !important;
+      padding-right: 36px !important;
+    }
   }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
   .site-footer .footer-title{ margin:0 0 8px; font-size:17px; }
