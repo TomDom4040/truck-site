@@ -17,14 +17,14 @@
       <h3 class="footer-title" data-i18n="footer.contacts">Our Contacts:</h3>
       <div class="footer-contact">
         <div class="value">
-          <span data-i18n="footer.phone">Phone</span> ☎️
+          ☎️ <span data-i18n="footer.phone">Phone</span>
           <a class="footer-link" href="tel:+17473299691">(747) 329-9691</a>
         </div>
         <div class="value">
           email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
         </div>
         <div class="value">
-          <span data-i18n="footer.addr">Our address:</span> 📍 5800 Sheila St, Commerce, CA
+          📍 <span data-i18n="footer.addr">Our address:</span> 5800 Sheila St, Commerce, CA
         </div>
       </div>
     </section>
