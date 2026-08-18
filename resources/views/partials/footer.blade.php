@@ -21,7 +21,7 @@
           <a class="footer-link" href="tel:+17473299691">(747) 329-9691</a>
         </div>
         <div class="value">
-          email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
+          📧 email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
         </div>
         <div class="value">
           📍 <span data-i18n="footer.addr">Our address:</span> 5800 Sheila St, Commerce, CA
