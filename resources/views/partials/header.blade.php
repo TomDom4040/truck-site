@@ -49,8 +49,9 @@
     $isHome
       ? ['href' => '/about', 'icon' => 'fa-circle-info', 'key' => 'nav.about', 'en' => 'About Us']
       : ['href' => '/',      'icon' => 'fa-house',       'key' => 'nav.home',  'en' => 'Home'],
+    // С внутренних страниц пункты ведут на главную, в нужное её место.
     ['href' => $isHome ? '#services' : '/#services', 'icon' => 'fa-screwdriver-wrench', 'key' => 'nav.ourServices', 'en' => 'Our Services'],
-    ['href' => '#contact',  'icon' => 'fa-phone',              'key' => 'nav.ourContacts', 'en' => 'Our Contacts'],
+    ['href' => $isHome ? '#contact'  : '/#contact',  'icon' => 'fa-phone',              'key' => 'nav.ourContacts', 'en' => 'Our Contacts'],
   ];
 @endphp
 <div class="header">
@@ -63,6 +64,8 @@
         <button type="button" class="lang-btn" data-lang="ru">Ru</button>
         <button type="button" class="lang-btn" data-lang="en">En</button>
       </span>
+    @elseif (request()->is('about'))
+      <a class="cta-btn" href="/" data-i18n="cta.back">Back to Home</a>
     @else
       <a class="cta-btn" href="/form" data-i18n="cta.request">Request Repair Cost</a>
     @endif

@@ -24,6 +24,7 @@
     'nav.ourServices': 'Наши услуги',
     'nav.ourContacts': 'Наши контакты',
     'cta.request':   'Рассчитать стоимость',
+    'cta.back':      'Назад на главную',
 
     // главная
     'home.callBtn':  'Позвонить',

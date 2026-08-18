@@ -1,3 +1,4 @@
+@if (!request()->is('about'))
 <!-- Site footer -->
 <footer class="site-footer">
   <div class="footer-inner">
@@ -54,7 +55,9 @@
   .site-footer .footer-text{ margin:0; }
 </style>
 
-<script src="/assets/i18n.js?v=9"></script>
+@endif
+
+<script src="/assets/i18n.js?v=10"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
