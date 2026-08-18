@@ -62,6 +62,12 @@
   /* Запас снизу: на телефоне поверх страницы всплывает панель браузера
      и раньше накрывала нижнюю строку. env(...) добавляет системную полосу iPhone. */
   .site-footer{ padding-bottom: calc(104px + env(safe-area-inset-bottom)) !important; }
+  /* На широком экране колонки сдвигаем сильнее: там есть запас.
+     До 1400px оставляем 96px — иначе строка «в Лос-Анджелесе…» ломается на три. */
+  @media (min-width: 1400px){
+    .site-footer .footer-inner > section:first-child{ padding-left: 210px !important; }
+    .site-footer .footer-inner > section:last-child{ padding-left: 150px !important; }
+  }
   @media (min-width: 768px){
     .site-footer{ padding-bottom: 44px !important; }   /* на компьютере столько не нужно */
     /* Колонки подвала повторяют разметку страницы: левая начинается ровно там же,
@@ -70,7 +76,7 @@
     /* у main те же 12px по краям — повторяем их, иначе подвал стоит на 12px левее */
     .site-footer{ padding-inline: 12px; }
     /* обе колонки сдвинуты внутрь своей ячейки */
-    .site-footer .footer-inner > section:first-child{ padding-left: 150px !important; }
+    .site-footer .footer-inner > section:first-child{ padding-left: 96px !important; }
     /* контакты чуть правее: просто отступ внутри своей колонки */
     .site-footer .footer-inner > section:last-child{ padding-left: 96px !important; }
     .site-footer .footer-inner{
