@@ -69,6 +69,8 @@
        не вылезают за правый край картинки с траком. */
     /* у main те же 12px по краям — повторяем их, иначе подвал стоит на 12px левее */
     .site-footer{ padding-inline: 12px; }
+    /* обе колонки сдвинуты внутрь своей ячейки */
+    .site-footer .footer-inner > section:first-child{ padding-left: 48px !important; }
     /* контакты чуть правее: просто отступ внутри своей колонки */
     .site-footer .footer-inner > section:last-child{ padding-left: 96px !important; }
     .site-footer .footer-inner{
