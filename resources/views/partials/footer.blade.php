@@ -71,8 +71,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 21px;
-      padding-left: 36px !important;
-      padding-right: 36px !important;
+      /* у самой полосы уже есть 12px по краям — добавляем 24px, итого 36px,
+         ровно как отступ картинок на странице */
+      padding-left: 24px !important;
+      padding-right: 24px !important;
     }
   }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
