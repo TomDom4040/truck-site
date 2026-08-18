@@ -3,7 +3,7 @@
   /* Надпись на месте бывшей красной кнопки (только на главной).
      Отступы те же, что были у кнопки, — соседние элементы шапки не съезжают. */
   /* Меню на телефоне — маленькое окошко под кнопкой MENU, а не полоса во всю ширину */
-  .header{ position: relative; }
+  .header{ position: relative; padding-block: 6px; }   /* полоса ниже: было 12px сверху и снизу */
   .menu-pop{
     position: absolute; right: 10px; top: calc(100% + 8px);
     display: none; z-index: 60;
