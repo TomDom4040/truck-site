@@ -71,10 +71,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 21px;
-      /* у самой полосы уже есть 12px по краям — добавляем 24px, итого 36px,
-         ровно как отступ картинок на странице */
-      padding-left: 24px !important;
-      padding-right: 24px !important;
+      /* Те же рамки, что у содержимого страницы: полоса подвала во всю ширину,
+         а сам текст — в коробке 1200px по центру, с отступом 12px, как у картинок.
+         Без max-width на широком мониторе текст уезжал к краям экрана. */
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
     }
   }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
