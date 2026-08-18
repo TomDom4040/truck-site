@@ -5,7 +5,11 @@
     <!-- 1. Название и описание -->
     <section>
       <h3 class="footer-title"><span data-i18n="footer.weAre">We are</span> PROFI TRUCK REPAIR LLC</h3>
-      <p class="footer-text" data-i18n="footer.tagline">Truck, pickup and trailer repair in Los Angeles, Commerce, California</p>
+      <p class="footer-text">
+        {{-- вторая строка отдельным переводом: перенос должен остаться в обоих языках --}}
+        <span data-i18n="footer.tagline">Truck, pickup and trailer repair</span><br>
+        <span data-i18n="footer.tagline2">in Los Angeles, Commerce, California</span>
+      </p>
     </section>
 
     <!-- 3. Контакты: номер и почта не переводим, только подписи -->
@@ -60,7 +64,7 @@
 
 @endif
 
-<script src="/assets/i18n.js?v=12"></script>
+<script src="/assets/i18n.js?v=13"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
