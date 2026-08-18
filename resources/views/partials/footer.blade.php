@@ -4,8 +4,8 @@
   <div class="footer-inner">
     <!-- 1. Название и описание -->
     <section>
-      <h3 class="footer-title">Profi Truck Repair Service</h3>
-      <p class="footer-text" data-i18n="footer.tagline">Truck, pickup and trailer repair in Los Angeles</p>
+      <h3 class="footer-title"><span data-i18n="footer.weAre">We are</span> PROFI TRUCK REPAIR LLC</h3>
+      <p class="footer-text" data-i18n="footer.tagline">Truck, pickup and trailer repair in Los Angeles, Commerce, California</p>
     </section>
 
     <!-- 3. Контакты: номер и почта не переводим, только подписи -->
@@ -18,6 +18,9 @@
         </div>
         <div class="value">
           email: <a class="footer-link" href="mailto:profitruckrepaillc@gmail.com">profitruckrepaillc@gmail.com</a>
+        </div>
+        <div class="value">
+          <span data-i18n="footer.addr">Our address:</span> 📍 5800 Sheila St, Commerce, CA
         </div>
       </div>
     </section>
@@ -57,7 +60,7 @@
 
 @endif
 
-<script src="/assets/i18n.js?v=11"></script>
+<script src="/assets/i18n.js?v=12"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
