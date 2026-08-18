@@ -51,9 +51,12 @@
 
 <style>
   /* У этих классов в общем CSS правил нет — оформляем здесь. */
-  .site-footer .footer-inner{ align-items: flex-start; }        /* колонки выравниваем по верху */
+  .site-footer .footer-inner{
+    align-items: flex-start;   /* колонки выравниваем по верху */
+    gap: 30px;                 /* воздух между описанием и контактами */
+  }
   .footer-icon-row{ display:flex; }
-  .footer-social{ justify-content:center; gap:20px; margin:18px 0 12px; font-size:20px; }
+  .footer-social{ justify-content:center; gap:20px; margin:32px 0 12px; font-size:20px; }  /* отступ от контактов до иконок */
   .site-footer .footer-bottom{ text-align:center; padding:0 12px; font-size:14px; opacity:.85; }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
   .site-footer .footer-title{ margin:0 0 8px; font-size:17px; }
