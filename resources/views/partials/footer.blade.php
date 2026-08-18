@@ -59,7 +59,12 @@
   .footer-social{ justify-content:center; gap:20px; margin:32px 0 12px; font-size:20px; }  /* отступ от контактов до иконок */
   .site-footer .footer-bottom{ text-align:center; padding:0 12px; font-size:14px; opacity:.85; }
   /* запас под строкой создателя: на айфоне учитываем ещё и системную полосу снизу */
-  .site-footer{ padding-bottom: max(44px, env(safe-area-inset-bottom)) !important; }
+  /* Запас снизу: на телефоне поверх страницы всплывает панель браузера
+     и раньше накрывала нижнюю строку. env(...) добавляет системную полосу iPhone. */
+  .site-footer{ padding-bottom: calc(104px + env(safe-area-inset-bottom)) !important; }
+  @media (min-width: 768px){
+    .site-footer{ padding-bottom: 44px !important; }   /* на компьютере столько не нужно */
+  }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
   .site-footer .footer-title{ margin:0 0 8px; font-size:17px; }
   .site-footer .footer-list{ list-style:none; margin:0; padding:0; }
