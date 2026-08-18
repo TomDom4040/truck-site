@@ -80,7 +80,9 @@
     <div class="container">
       <article lang="en" data-lang-block="en">
         <h1>About Us</h1>
-        <p>We are an experienced truck and trailer repair team in the Los Angeles area, in the city of Commerce. Our mechanics have over 20 years of truck repair experience!</p>
+        <p><strong>We are PROFI TRUCK REPAIR LLC</strong></p>
+        <p>An experienced truck and trailer repair team in the Los Angeles area, in the city of Commerce. Our mechanics have over 20 years of continuous truck repair experience!</p>
+        <p>We speak Russian and English.</p>
         <p class="lead-in">We handle all types of work:</p>
         <ul class="services-list">
           <li>valve repair</li>
@@ -98,7 +100,9 @@
 
       <article class="lang-ru" lang="ru" data-lang-block="ru">
         <h2>О нас</h2>
-        <p>Мы опытная команда по ремонту траков и трейлеров в округе Лос-Анджелесе, город Коммерс. Наши мастера имеют более 20 лет опыта ремонта траков!</p>
+        <p><strong>Мы PROFI TRUCK REPAIR LLC</strong></p>
+        <p>Опытная команда по ремонту траков и трейлеров в округе Лос-Анджелес, город Коммерс. Наши мастера имеют более 20 лет непрерывного опыта ремонта траков!</p>
+        <p>Мы говорим на русском и английском языках.</p>
         <p class="lead-in">Мы выполняем все виды работ:</p>
         <ul class="services-list">
           <li>ремонт клапанов</li>
