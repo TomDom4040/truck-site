@@ -62,12 +62,6 @@
   /* Запас снизу: на телефоне поверх страницы всплывает панель браузера
      и раньше накрывала нижнюю строку. env(...) добавляет системную полосу iPhone. */
   .site-footer{ padding-bottom: calc(104px + env(safe-area-inset-bottom)) !important; }
-  /* На широком экране колонки сдвигаем сильнее: там есть запас.
-     До 1400px оставляем 96px — иначе строка «в Лос-Анджелесе…» ломается на три. */
-  @media (min-width: 1400px){
-    .site-footer .footer-inner > section:first-child{ padding-left: 210px !important; }
-    .site-footer .footer-inner > section:last-child{ padding-left: 150px !important; }
-  }
   @media (min-width: 768px){
     .site-footer{ padding-bottom: 44px !important; }   /* на компьютере столько не нужно */
     /* Колонки подвала повторяют разметку страницы: левая начинается ровно там же,
@@ -91,6 +85,12 @@
       padding-left: 12px !important;
       padding-right: 12px !important;
     }
+  }
+  /* На широком экране колонки сдвигаем сильнее: там есть запас.
+     До 1400px оставляем 96px — иначе строка «в Лос-Анджелесе…» ломается на три. */
+  @media (min-width: 1400px){
+    .site-footer .footer-inner > section:first-child{ padding-left: 210px !important; }
+    .site-footer .footer-inner > section:last-child{ padding-left: 150px !important; }
   }
   .site-footer .footer-contact .value{ margin-bottom:6px; overflow-wrap:anywhere; }  /* длинная почта не вылезает за край */
   .site-footer .footer-title{ margin:0 0 8px; font-size:17px; }
