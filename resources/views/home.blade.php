@@ -99,12 +99,16 @@
           <div class="text-block services-block" id="services">
             <div class="services-head" data-i18n="home.services">Our Services:</div>
             <ul class="services-list">
-              <li data-i18n="footer.diag">Diagnostics</li>
-              <li data-i18n="footer.dpf">DPF Service</li>
-              <li data-i18n="footer.electrical">Electrical Repair</li>
-              <li data-i18n="footer.oil">Oil Change</li>
-              <li data-i18n="footer.brakes">Brake Jobs</li>
-              <li data-i18n="footer.air">Air System Repair</li>
+              <li data-i18n="svc.valve">valve repair</li>
+              <li data-i18n="svc.engine">engine repair</li>
+              <li data-i18n="svc.apu">APU diagnostics and repair</li>
+              <li data-i18n="svc.computer">computer diagnostics</li>
+              <li data-i18n="svc.def">DEF system repair</li>
+              <li data-i18n="svc.cooling">cooling system repair</li>
+              <li data-i18n="svc.ac">air conditioning (A/C) repair</li>
+              <li data-i18n="svc.fuel">fuel system repair</li>
+              <li data-i18n="svc.clutch">clutch replacement</li>
+              <li data-i18n="svc.other">and more</li>
             </ul>
           </div>
         </div>

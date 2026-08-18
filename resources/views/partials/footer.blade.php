@@ -57,7 +57,7 @@
 
 @endif
 
-<script src="/assets/i18n.js?v=10"></script>
+<script src="/assets/i18n.js?v=11"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
