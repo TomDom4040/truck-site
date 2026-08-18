@@ -48,7 +48,7 @@
     'footer.weAre':      'Мы',
     'footer.contacts':   'Наши контакты:',
     'footer.addr':       'Наш адрес:',
-    'footer.phone':      'Телефон',
+    'footer.phone':      'Телефон:',
     'footer.by':         'Сайт создан компанией ElkaClub',
 
     // страница формы

@@ -17,7 +17,7 @@
       <h3 class="footer-title" data-i18n="footer.contacts">Our Contacts:</h3>
       <div class="footer-contact">
         <div class="value">
-          ☎️ <span data-i18n="footer.phone">Phone</span>
+          ☎️ <span data-i18n="footer.phone">Phone:</span>
           <a class="footer-link" href="tel:+17473299691">(747) 329-9691</a>
         </div>
         <div class="value">
@@ -74,7 +74,7 @@
 
 @endif
 
-<script src="/assets/i18n.js?v=13"></script>
+<script src="/assets/i18n.js?v=14"></script>
 
 <!-- Shared JS (mobile menu + year) -->
 <script>
